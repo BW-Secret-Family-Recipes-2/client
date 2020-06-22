@@ -21,27 +21,40 @@ export default function Login(props){
 
 
     const onChange = evt => {
-        setUser(evt.target)
+
+        setUser(evt.target.value)
     }
 
     const onSubmit = evt => {
-    
+        setUser(evt.target.value)
     }
+    
+
+    const newLogin={
+        id:uuid(),
+        username:initialInfoValues.username,
+        email:initialInfoValues.email
+    }
+    
 
     return(
 
         <form>
             <div>
-                <div>
-                    <h2>Enter Info</h2>
-                    <button>Submit</button>
+            <div>
+                    <h1>Sign In</h1>
+                    
                 </div>
+               
                 <div>
                     <label>Username:&nbsp;
                         <input 
                             type='text'
                             name='username'
+                            value={initialInfoValues.user}
                             maxLength='20'
+                            onInputChange={onChange}
+                            onSubmit={onSubmit}
 
                         />
                     </label>
@@ -50,10 +63,17 @@ export default function Login(props){
                             type='text'
                             name='password'
                             maxLength='20'
+                            onInputChange={onChange}
+                            onSubmit={onSubmit}
+
                         />
                     </label>
 
 
+                </div>
+                <div>
+                    
+                    <button>Submit</button>
                 </div>
             </div>
         </form>
