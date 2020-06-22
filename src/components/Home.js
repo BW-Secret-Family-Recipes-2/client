@@ -7,10 +7,11 @@ import { useSelector } from 'react-redux'
 
 const Home = () => {
 const [updating] = useSelector(state=>[state.updating]) 
+
     return(
         <div className='home' >
           {!updating &&  <LoadingLottie height={200} width={200} />} 
-          {/* ^^ remove later; just here to look through loader options */}
+          {/* ^^ remove later; just here to look through loader options!!!!!!!!!!!!!!!!!!!! */}
             This is the Home Page: 
             <UpdateRecipe />
             <AddRecipe />
