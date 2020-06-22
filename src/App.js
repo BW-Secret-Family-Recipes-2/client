@@ -36,10 +36,10 @@ function App() {
     <Route path="/login">
       <Login />
     </Route>
-
+{/* Need to change Home to a PrivateRoute later: */}
     <Route path="/">
         <Home />
-    </Route>
+    </Route> 
 
   </Switch>
 

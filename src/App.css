@@ -1,38 +1,38 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap'); /*logo font*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap'); /*body font*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@1,300&display=swap'); /*body font italic*/
+/* Reset: */
+*{
+  box-sizing: border-box;
+  padding:0;
+  margin:0;
+  font-size: 1rem;
+  max-width: 100%;
+  /* border: 2px solid grey; */
 }
+/* Reset ^ */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.home{
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+}
+
+.home > *{
+  margin: 1% 0;
+}
+
+.recipeForm{
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  width: 50%;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.recipeForm label{
+display:flex;
+flex-direction: column;
+width: 60%;
 }
