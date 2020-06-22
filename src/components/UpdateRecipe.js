@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 const initialState = {
@@ -12,6 +12,10 @@ const initialState = {
 const UpdateRecipe = () => {
     const [updatedRecipe, setUpdatedRecipe] = useState(initialState)
     const [updating] = useSelector(state => [state.updating])
+
+    useEffect(()=>{
+        //get by id call for recipes -- need set updating recipe into the inputs
+    }, []) //<-id
 
     const handleChange = e => {
         setUpdatedRecipe({ ...updatedRecipe, [e.target.name]: e.target.value })
