@@ -8,48 +8,24 @@ import Home from './components/Home'
 import Login from './components/Login'
 
 
-const exampleUser = {
-  id: uuid(),
-  username:'Harper',
-  password:'abc123',
-}
-
-const initialInfoValues = {
-  id: uuid(),
-  username: '',
-  password: '',
-}
 
 
 function App() {
 
-  const [ user, setUser] = useState(initialInfoValues)
   
 
 
-  const onChange = evt => {
-
-    setUser(evt.target)
-    
-
-  }
-
-  const onSubmit = evt => {
-    
-  }
-
-
   return (
-<div>
+  <div>
       Secret Family Recipe 2
 
-      THis is the site!
+      This is the site!
 
   {/* Links below */}
     <nav>
 
       <Link to='/'>Home</Link>
-
+      <br></br>
       <Link to='/login'>Login</Link>
 
     </nav>
@@ -57,14 +33,11 @@ function App() {
   {/* Routes below */}
 
   <Switch>
-    <Route>
-      <Login 
-      onChange={onChange}
-      onSubmit={onSubmit}
-      />
+    <Route path="/login">
+      <Login />
     </Route>
 
-    <Route>
+    <Route path="/">
         <Home />
     </Route>
 
