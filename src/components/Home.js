@@ -6,7 +6,7 @@ import RecipeList from './RecipeList'
 const Home = () => {
 
     return(
-        <div>
+        <div className='home'>
             This is the Home Page: 
             <AddRecipe />
             <UpdateRecipe />

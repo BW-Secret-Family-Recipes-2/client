@@ -17,10 +17,11 @@ const UpdateRecipe = () => {
 
     const handleSubmit = e => {
         e.preventDefault()
+        // Must flesh out later
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className='recipeForm' onSubmit={handleSubmit}>
             <label>Title:
             <input
                     name='title'
