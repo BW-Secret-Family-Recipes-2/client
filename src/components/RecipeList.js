@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const RecipeList = () => {
+
+    useEffect(()=>{
+//getRecipe get request function here
+    },[])
 //Probably will do Search bar here (filter function below as well)!!!!!!!!!!!!!!!!!!!!!!!!!
     return(
         <div>
