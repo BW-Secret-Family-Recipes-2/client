@@ -6,7 +6,7 @@ import './App.css';
 
 import Home from './components/Home'
 import Login from './components/Login'
-
+import Registration from './components/Registration'
 
 
 
@@ -25,6 +25,10 @@ function App() {
       <Link to='/'>Home</Link>
       <br></br>
       <Link to='/login'>Login</Link>
+      <br></br>
+      <Link to='/registration'>Register</Link>
+
+
 
     </nav>
 
@@ -33,7 +37,11 @@ function App() {
     <Route path="/login">
       <Login />
     </Route>
-{/* !!!!!!!!!!!Need to change Home to a PrivateRoute later: */}
+
+    <Route path="/registration">
+      <Registration />
+    </Route>
+
     <Route path="/">
         <Home />
     </Route> 
