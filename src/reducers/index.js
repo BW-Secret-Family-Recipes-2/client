@@ -2,7 +2,8 @@ import * as types from '../types'
 
 export const initialState = {
     user:{},
-    recipes:[]
+    recipes:[],
+    updating:false
 }
 
 
@@ -28,6 +29,7 @@ export const reducer = (state = initialState, action) => {
         case types.UPDATE_RECIPE:
             return{
                 ...state,
+                updating: true,
             }    
 
         default:
