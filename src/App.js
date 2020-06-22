@@ -19,8 +19,6 @@ function App() {
   <div>
       Secret Family Recipe 2
 
-      This is the site!
-
   {/* Links below */}
     <nav>
 
@@ -31,12 +29,11 @@ function App() {
     </nav>
 
   {/* Routes below */}
-
   <Switch>
     <Route path="/login">
       <Login />
     </Route>
-{/* Need to change Home to a PrivateRoute later: */}
+{/* !!!!!!!!!!!Need to change Home to a PrivateRoute later: */}
     <Route path="/">
         <Home />
     </Route> 
