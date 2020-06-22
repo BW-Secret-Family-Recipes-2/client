@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux'
 
 const Home = () => {
 const [updating] = useSelector(state=>[state.updating]) 
+
     return(
         <div className='home' >
           {!updating &&  <LoadingLottie height={200} width={200} />} 
