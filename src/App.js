@@ -25,7 +25,7 @@ function App() {
       <Link to='/'>Home</Link>
       <br></br>
       <Link to='/login'>Login</Link>
-
+      
     </nav>
 
   {/* Routes below */}
