@@ -6,6 +6,7 @@ import formSchema from '../validation/formSchema'
 import* as Yup from 'yup'//needs * to work without error
 import { useDispatch } from 'react-redux'
 import { postUserLogin } from '../actions'
+import { axiosWithAuth } from '../utils/axiosWithAuth'
 
 
 
@@ -66,18 +67,19 @@ export default function Login(props){
 
   
     const postNewLogin = newLogin =>{
-        // axios.post('https://recipes-bw.herokuapp.com/api/auth/login', newLogin)
-        // .then(res=>{
-        //     console.log(res.data)
-        //     localStorage.setItem("userID",res.data.user.id)
-        //     // console.log(localStorage.getItem("userID"))
-        //     window.localStorage.setItem('token', res.data.token)
-        //     history.push("/")
-        // })
-        // .catch(error=>{
-        //     console.log('you broke it!',error)
-        // })
-        dispatch(postUserLogin(newLogin, history))
+        axiosWithAuth()
+        .post('https://recipes-bw.herokuapp.com/api/auth/login', newLogin)
+        .then(res=>{
+            console.log(res.data)
+            localStorage.setItem("userID",res.data.user.id)
+            // console.log(localStorage.getItem("userID"))
+            window.localStorage.setItem('token', res.data.token)
+            history.push("/")
+        })
+        .catch(error=>{
+            console.log('you broke it!',error)
+        })
+        // dispatch(postUserLogin(newLogin, history))
     }
 
     const onSubmit = evt => {
