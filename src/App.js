@@ -29,9 +29,7 @@ function App() {
           <Registration />
         </Route>
 
-        <PrivateRoute path="/"> {/* Need to be PrivateRoute once Login&Registration is authorized*/}
-          <Home />
-        </PrivateRoute>
+        <PrivateRoute exact path="/" component={Home}/> 
 
       </Switch>
 
