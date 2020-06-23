@@ -25,15 +25,18 @@ export default function Login(props){
         setUser(evt.target.value)
     }
 
+    
     const onSubmit = evt => {
+        newLogin()
         setUser(evt.target.value)
+        
     }
     
 
     const newLogin={
         id:uuid(),
-        username:initialInfoValues.username,
-        email:initialInfoValues.email
+        username:user.username,
+        password:user.password
     }
     
 
@@ -51,7 +54,7 @@ export default function Login(props){
                         <input 
                             type='text'
                             name='username'
-                            value={initialInfoValues.user}
+                            value={user.username}
                             maxLength='20'
                             onInputChange={onChange}
                             onSubmit={onSubmit}
@@ -62,6 +65,7 @@ export default function Login(props){
                         <input 
                             type='text'
                             name='password'
+                            value={user.password}
                             maxLength='20'
                             onInputChange={onChange}
                             onSubmit={onSubmit}
