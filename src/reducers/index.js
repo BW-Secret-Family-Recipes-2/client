@@ -13,10 +13,12 @@ export const reducer = (state = initialState, action) => {
         case types.FETCH_USER:
             return{
                 ...state,
+                user: action.payload
             }
         case types.FETCH_RECIPES:
             return{
                 ...state,
+                recipes: action.payload
             }   
         case types.ADD_RECIPE:
             return{
