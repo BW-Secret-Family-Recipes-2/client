@@ -2,23 +2,29 @@ import React, { useState,useEffect } from 'react'
 import axios from 'axios'
 import { v4 as uuid } from 'uuid'
 import { getQueriesForElement } from '@testing-library/react'
+import * as Yup from 'yup'
+import formSchema from '../validation/formSchema2'
 
 
-const exampleUser = {
-    id: uuid(),
-    username:'Harper',
-    password:'abc123',
-  }
+
   
   const initialInfoValues = {
     id: uuid(),
     username: '',
     password: '',
+    email: '',
   }
 
   const initialFormValues = {
-      username: '',
-      password: '',
+    username: '',
+    password: '',
+    email: '',
+  }
+
+  const initialFormErrors = {
+    username: '',
+    password: '',
+    email: '',
   }
   
 
@@ -26,24 +32,57 @@ export default function Registration(){
 
     const [ user, setUser] = useState(initialInfoValues)
     const [ formValues, setFormValues ] = useState(initialFormValues)
+    const [ formErrors, setFormErrors ] = useState(initialFormErrors)
 
 
 
     const onChange = evt => {
 
-        const { name, value } = evt.target
+      const { name, value } = evt.target
 
-        setUser({
-            ...user,
-            [name]: value,
-        })
+      // Yup
+      //   .reach(formSchema, user)
+      //   .validate(value)
+      //   .then(() => {
+      //     setFormValues({
+      //       ...formErrors,
+      //       [name]: ""
+      //     })
+      //   })
+      //   .catch(err => {
+      //     setFormErrors({
+      //       ...formErrors,
+      //       [name]: err.errors[0]
+      //     })
+      //   })
 
-        setFormValues({
-            ...formValues,
-            [name]:value,
-        })
+
+      setUser({
+        ...user,
+        [name]: value,
+      })
+
+      setFormValues({
+        ...formValues,
+        [name]:value,
+      })
 
     }
+
+    const postNewUser = newUser => {
+
+      axios.post('https://recipes-bw.herokuapp.com/api/auth/register', newUser)
+    .then(res => {
+      console.log(res.data)
+      // setUser([...user, res.data])
+    })
+    .catch(err => {
+      debugger
+    })
+    .finally(() =>{
+      setFormValues(initialInfoValues)
+    })
+  }
 
     const onSubmit = evt => {
      
@@ -56,35 +95,9 @@ export default function Registration(){
         postNewUser(newUser)
     }
 
-    const postNewUser = newUser => {
+    
 
-        axios.post('https://reqres.in/api/user', newUser)
-      .then(res => {
-        setUser([...user, res.data])
-      })
-      .catch(err => {
-        debugger
-      })
-      .finally(() =>{
-        setFormValues(initialInfoValues)
-      })
-    }
-
-    const getUser = () => {
-        axios.get('https://reqres.in/api/user')
-      .then(response => {
-        console.log(response.data)
-        setUser(response.data)
-      })
-      .catch(err => {
-        debugger
-      })
-    }
-
-
-    useEffect(() => {
-        getUser()
-    }, [])
+    
 
 
     return(
@@ -95,6 +108,10 @@ export default function Registration(){
                     <button>Create</button>
                 </div>
                 <div>
+
+                  <br></br>
+                  <br></br>
+
                     <label>Username:&nbsp;
                         <input 
                             type='text'
@@ -104,12 +121,29 @@ export default function Registration(){
                             onChange={onChange}
                         />
                     </label>
+
+                    <br></br>
+                    <br></br>
+
                     <label>Password:&nbsp;
                         <input 
                             type='text'
                             name='password'
                             maxLength='20'
                             value={user.password}
+                            onChange={onChange}
+                        />
+                    </label>
+
+                    <br></br>
+                    <br></br>
+
+                    <label>E-Mail Address:&nbsp;
+                        <input 
+                            type='text'
+                            name='email'
+                            maxLength='20'
+                            value={user.email}
                             onChange={onChange}
                         />
                     </label>
