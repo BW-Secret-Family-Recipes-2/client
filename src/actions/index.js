@@ -14,9 +14,9 @@ export const fetchUser = (userid) => dispatch => {
         })
 }
 
-export const postUserLogin = (newUser) => dispatch =>{
+export const postExistingUser = (newUser) => dispatch =>{
     axiosWithAuth()
-    .post('/api/auth/register')
+    .post('/api/auth/login')
     .then(res=>{
         console.log(res)
         // window.localStorage.setItem('token', res.data.payload)
@@ -28,11 +28,18 @@ export const postUserLogin = (newUser) => dispatch =>{
     })
 }
 
-export const postUserRegister = (newUser) => dispatch => {
+export const postUserRegister = (newUser, history) => dispatch => {
     axiosWithAuth()
-    .post('/api/auth/login', newUser)
+    .post('/api/auth/register', newUser)
     .then(res=>{
-        console.log(res)
+        console.log(res.data)
+        localStorage.setItem("userID",res.data.newUser.id)
+        console.log(localStorage.getItem("userID"))
+        window.localStorage.setItem('token', res.data.token)
+        // //navigate the user to /protected route (whatever landing page)
+        history.push('/')
+
+        dispatch({type: types.POST_NEWUSER, payload: res.data.newUser}) //New
     })
     .catch(err=>{
         console.log(err)
@@ -64,11 +71,37 @@ export const addRecipe = (newRecipe) => dispatch => {
     })
 }
 
-export const deleteRecipe = () => dispatch => {
-
+export const deleteRecipe = (recipeId) => dispatch => {
+    axiosWithAuth()
+    .post(`/api/recipes/${recipeId}`)
+    .then(res => {
+        console.log(res)
+    })
+    .catch(err => {
+        console.log(err)
+    })
 }
 
-export const updateRecipe = () => dispatch => {
-
+export const updateRecipe = (recipe) => dispatch => {
+    axiosWithAuth()
+    .put(`/api/recipes/${recipe.id}`, recipe)
+    .then(res=>{
+        console.log(res)
+    })
+    .catch(err=>{
+        console.log(err)
+    })
 }
 
+
+// Might use this one inside of updateRecipe
+export const getRecipeById = recipeId => dispatch =>{
+    axiosWithAuth()
+    .get(`/api/recipes/${recipeId}`)
+    .then(res=>{
+        console.log(res)
+    })
+    .catch(err=>{
+        console.log(err)
+    })
+}
