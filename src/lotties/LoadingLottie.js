@@ -5,11 +5,11 @@ import animationData2 from './10818-food-around-the-city.json'
 import animationData3 from './24064-food-squeeze-with-burger-and-hot-dog.json'
 import animationData4 from './24985-web-dev.json'
 
-export const LoadingLottie = ({height, width}) => {
+export const LoadingLottie = ({height, width, something}) => {
     const defaultOptions ={
         loop: true,
         autoplay: true,
-        animationData: animationData3,
+        animationData: something || animationData3,
         rendererSettings: {
           preserveAspectRatio: 'xMidYMid slice'
         }
