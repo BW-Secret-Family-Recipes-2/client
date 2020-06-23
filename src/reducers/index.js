@@ -36,7 +36,6 @@ export const reducer = (state = initialState, action) => {
                 updating: true,
             }  
             
-       
 
         default:
             return state;

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
+import { axiosWithAuth } from '../utils/axiosWithAuth'
 
 const initialState = {
     title: '',
@@ -12,10 +14,19 @@ const initialState = {
 const UpdateRecipe = () => {
     const [updatedRecipe, setUpdatedRecipe] = useState(initialState)
     const [updating] = useSelector(state => [state.updating])
-
+    const params = useParams()
+    
     useEffect(()=>{
         //get by id call for recipes -- need set updating recipe into the inputs
-    }, []) //<-id
+        axiosWithAuth()
+        .get(`/api/recipes/${params.id}`)
+        .then(res=>{
+            console.log(res)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }, [params.id]) //<-id
 
     const handleChange = e => {
         setUpdatedRecipe({ ...updatedRecipe, [e.target.name]: e.target.value })
