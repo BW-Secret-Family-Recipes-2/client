@@ -30,6 +30,7 @@ export default function Login(props){
        setUser({...user,[evt.target.name]:evt.target.value})
        const {name,value}=evt.target.value
 
+       //Yup needs looking over
        Yup
         .reach(formSchema,name)
         .validate(value)
@@ -42,7 +43,7 @@ export default function Login(props){
         .catch(err=>{
             setFormError({
                 ...formError,
-            [name]:err.error[0]
+            [name]:err.error    
             })
         })
         
