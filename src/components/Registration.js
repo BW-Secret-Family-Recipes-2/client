@@ -1,6 +1,5 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { v4 as uuid } from 'uuid'
 import { getQueriesForElement } from '@testing-library/react'
 import * as Yup from 'yup'
 import formSchema from '../validation/formSchema2'
@@ -43,21 +42,21 @@ export default function Registration(){
 
       const { name, value } = evt.target
 
-      // Yup
-      //   .reach(formSchema, user)
-      //   .validate(value)
-      //   .then(() => {
-      //     setFormValues({
-      //       ...formErrors,
-      //       [name]: ""
-      //     })
-      //   })
-      //   .catch(err => {
-      //     setFormErrors({
-      //       ...formErrors,
-      //       [name]: err.errors[0]
-      //     })
-      //   })
+      Yup
+        .reach(formSchema, name)
+        .validate(value)
+        .then(() => {
+          setFormErrors({
+            ...formErrors,
+            [name]: ""
+          })
+        })
+        .catch(err => {
+          setFormErrors({
+            ...formErrors,
+            [name]: err.errors[0]
+          })
+        })
 
 
       setUser({
@@ -102,6 +101,8 @@ export default function Registration(){
         postNewUser(newUser)
     }
 
+
+
     
 
     
@@ -134,7 +135,7 @@ export default function Registration(){
 
                     <label>Password:&nbsp;
                         <input 
-                            type='text'
+                            type='password'
                             name='password'
                             maxLength='20'
                             value={user.password}
@@ -149,11 +150,26 @@ export default function Registration(){
                         <input 
                             type='text'
                             name='email'
-                            maxLength='20'
+                            maxLength='50'
                             value={user.email}
                             onChange={onChange}
                         />
                     </label>
+
+                    <br></br>
+                    <br></br>
+
+                    <div>
+                      
+                      <div>{formErrors.username}</div>
+                      
+
+                      <div>{formErrors.password}</div>
+
+                      
+                      <div>{formErrors.email}</div>
+                      
+                    </div>
                 </div>
             </div>
         </form>
