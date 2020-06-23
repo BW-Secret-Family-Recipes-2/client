@@ -3,7 +3,8 @@ import * as types from '../types'
 export const initialState = {
     user:{},
     recipes:[],
-    updating:false
+    updating:false,
+   
 }
 
 
@@ -23,6 +24,7 @@ export const reducer = (state = initialState, action) => {
         case types.ADD_RECIPE:
             return{
                 ...state,
+                recipes:[...state.recipes, action.payload]
             }
         case types.DELETE_RECIPE:
             return{
@@ -32,7 +34,9 @@ export const reducer = (state = initialState, action) => {
             return{
                 ...state,
                 updating: true,
-            }    
+            }  
+            
+       
 
         default:
             return state;

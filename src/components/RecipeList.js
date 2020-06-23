@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { fetchRecipes } from '../actions'
+import { fetchRecipes} from '../actions'
 import { useDispatch, useSelector } from 'react-redux'
 
 const RecipeList = () => {
