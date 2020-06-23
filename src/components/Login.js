@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios'
+import* as Yup from 'yup'
 import { v4 as uuid } from 'uuid'
 
 const exampleUser = {
@@ -27,6 +28,7 @@ export default function Login(props){
 
     
     const onSubmit = evt => {
+        evt.preventDefault()
         newLogin()
         setUser(evt.target.value)
         
