@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import { v4 as uuid } from 'uuid'
 import formSchema from '../validation/formSchema'
@@ -23,13 +24,14 @@ export default function Login(props){
     const [ user, setUser] = useState(initialInfoValues)
     const [formError,setFormError]=useState(initialInfoValues)
 
-  
+    const history = useHistory()
     
     const onChange = evt => {
 
        setUser({...user,[evt.target.name]:evt.target.value})
        const {name,value}=evt.target.value
-
+       
+        
        //Yup needs looking over
        Yup
         .reach(formSchema,name)
@@ -63,10 +65,14 @@ export default function Login(props){
         axios.post('https://recipes-bw.herokuapp.com/api/auth/login', newLogin)
         .then(res=>{
             console.log(res.data)
+            localStorage.setItem("userID",res.data.newUser.id)
+            console.log(localStorage.getItem("userID"))
+            history.push("/")
         })
         .catch(error=>{
             console.log('you broke it!',error)
         })
+        
     }
 
     const onSubmit = evt => {
