@@ -175,5 +175,7 @@ export default function Registration() {
       </div>
     </form>
 
+
   )
+
 }

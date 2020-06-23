@@ -6,7 +6,7 @@ const RecipeList = () => {
     const [searchTerm, setSearchTerm] = useState('')
     const dispatch = useDispatch()
     const [recipes] = useSelector(state => [state.recipes])
-    // console.log(recipes)
+    console.log(recipes)
     useEffect(() => {
         // get request function here to get recipes array
         dispatch(fetchRecipes())
@@ -34,6 +34,16 @@ const RecipeList = () => {
 {/* `````````````````````````````````````````````````````````````````````````````````````````````````` */}
             {/*REACT I: Go ahead and make a map in here (console.log(recipes) on line 9 to see what you're
                 dealing with and what you can display to the screen) */}
+
+                {recipes.map((item) => (
+                    <div>
+                        <h3>{item.title}</h3>
+                        <h5>{item.category}</h5>
+                        <p>{item.instructions}</p>
+                        <br></br>
+                    </div>
+                ))}
+
             
         </div>
     )
