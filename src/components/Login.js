@@ -1,17 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import* as Yup from 'yup'//needs * to work without error
 import { v4 as uuid } from 'uuid'
+import formSchema from '../validation/formSchema'
+import* as Yup from 'yup'//needs * to work without error
 
-const formSchema=Yup.obvject().shape({
-    username:Yup
-        .string()
-        .required('Must include a username'),
-    password:Yup
-        .string()
-        .min(6,'Passwords must be at least 6 characters long')
-        .required('Password is Required')
-})
+
 
 const exampleUser = {
     id: uuid(),
@@ -28,9 +21,10 @@ const exampleUser = {
 export default function Login(props){
 
     const [ user, setUser] = useState(initialInfoValues)
+    const [error,setError]=useState(initialInfoValues)
+
   
-
-
+    
     const onChange = evt => {
 
         setUser(evt.target.value)
@@ -39,7 +33,7 @@ export default function Login(props){
     
     const onSubmit = evt => {
         evt.preventDefault()
-        newLogin()
+        
         setUser(evt.target.value)
         
     }
@@ -66,6 +60,7 @@ export default function Login(props){
                         <input 
                             type='text'
                             name='username'
+                            placeholder='username'
                             value={user.username}
                             maxLength='20'
                             onInputChange={onChange}
@@ -77,6 +72,7 @@ export default function Login(props){
                         <input 
                             type='text'
                             name='password'
+                            placeholder='password'
                             value={user.password}
                             maxLength='20'
                             onInputChange={onChange}
@@ -89,7 +85,7 @@ export default function Login(props){
                 </div>
                 <div>
                     
-                    <button>Submit</button>
+                    <button className='submitBtn'>Submit</button>
                 </div>
             </div>
         </form>
