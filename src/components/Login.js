@@ -41,7 +41,7 @@ export default function Login(props){
        const {name,value}=evt.target //deleted .value
        
         
-       //Yup needs looking over
+       
        Yup
         .reach(formSchema,name)
         .validate(value)
@@ -64,8 +64,7 @@ export default function Login(props){
 
     
 
-   //not showing?
-   //come back
+  
     const postNewLogin = newLogin =>{
         // axios.post('https://recipes-bw.herokuapp.com/api/auth/login', newLogin)
         // .then(res=>{
@@ -124,7 +123,7 @@ export default function Login(props){
                     </label><br/><br/>
                     <label>Password:&nbsp;
                         <input 
-                            type='text'
+                            type='password'
                             name='password'
                             placeholder='password'
                             value={user.password}
