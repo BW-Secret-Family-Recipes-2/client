@@ -21,24 +21,58 @@ const exampleUser = {
 export default function Login(props){
 
     const [ user, setUser] = useState(initialInfoValues)
-    const [error,setError]=useState(initialInfoValues)
+    const [formError,setFormError]=useState(initialInfoValues)
 
   
     
     const onChange = evt => {
 
-        setUser({...user,[evt.target.name]:evt.target.value})
+       setUser({...user,[evt.target.name]:evt.target.value})
+       const {name,value}=evt.target.value
+
+       Yup
+        .reach(formSchema,name)
+        .validate(value)
+        .then(()=>{
+            setFormError({
+                ...formError,
+                [name]:''
+            })
+        })
+        .catch(err=>{
+            setFormError({
+                ...formError,
+            [name]:err.error[0]
+            })
+        })
+        
     }
 
+    
     const newLogin={
         id:uuid(),
         username:user.username,
         password:user.password
     }
     
+
+   //not showing?
+   //come back
+    const postNewLogin = newLogin=>{
+        axios.post('https://recipes-bw.herokuapp.com/api/auth/login', newLogin)
+        .then(res=>{
+            console.log(res.data)
+        })
+        .catch(error=>{
+            console.log('you broke it!',error)
+        })
+    }
+
     const onSubmit = evt => {
         evt.preventDefault()
         setUser(evt.target.value)
+
+        postNewLogin(newLogin)
         
     }
     
@@ -63,11 +97,11 @@ export default function Login(props){
                             placeholder='username'
                             value={user.username}
                             maxLength='20'
-                            onInputChange={onChange}
+                            onChange={onChange}
                             onSubmit={onSubmit}
 
                         />
-                    </label>
+                    </label><br/>
                     <label>Password:&nbsp;
                         <input 
                             type='text'
@@ -75,7 +109,7 @@ export default function Login(props){
                             placeholder='password'
                             value={user.password}
                             maxLength='20'
-                            onInputChange={onChange}
+                            onChange={onChange}
                             onSubmit={onSubmit}
 
                         />
