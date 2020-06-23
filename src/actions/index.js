@@ -19,6 +19,9 @@ export const postUserLogin = (newUser) => dispatch =>{
     .post('/api/auth/register')
     .then(res=>{
         console.log(res)
+        // window.localStorage.setItem('token', res.data.payload)
+        // //navigate the user to /protected route (whatever landing page)
+        // props.history.push('/protected')
     })
     .catch(err=>{
         console.log(err)
