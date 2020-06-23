@@ -28,9 +28,7 @@ const NavBar = () => {
         <div className='navBar'>
             <h2>Secret Family Recipe 2</h2> 
             <nav> 
-
-                {/* <Link to='/login'>Login</Link> */}
-       
+     
                 <Link onClick={logout} to='/'>{userLoggedIn ? 'Logout' : 'Login'}</Link> {/*switch route to '/' once private Route is running*/}
         
                 <Link to='/registration'>Register</Link>
