@@ -1,7 +1,17 @@
 import React, {useState} from 'react'
 import axios from 'axios'
-import* as Yup from 'yup'
+import* as Yup from 'yup'//needs * to work without error
 import { v4 as uuid } from 'uuid'
+
+const formSchema=Yup.obvject().shape({
+    username:Yup
+        .string()
+        .required('Must include a username'),
+    password:Yup
+        .string()
+        .min(6,'Passwords must be at least 6 characters long')
+        .required('Password is Required')
+})
 
 const exampleUser = {
     id: uuid(),
