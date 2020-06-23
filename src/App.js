@@ -9,25 +9,31 @@ import Login from './components/Login'
 import Registration from './components/Registration'
 
 
-
+const token = window.localStorage.getItem('token') //move that to NavBar 
 function App() {
 
-  
+  const logout = () => { //Move this function to NavBar 
+    if (token) {
+      alert('Logging out')
+      localStorage.removeItem('token')
+    }
+  }
 
 
   return (
   <div>
-      Secret Family Recipe 2
+      <h2>Secret Family Recipe 2</h2> {/* move this header into NavBar return statement*/}
 
   {/* Links below */}
-    <nav>
+    <nav> {/*move this whole nav into NavBar return statement*/}
 
       <Link to='/'>Home</Link>
       <br></br>
       <Link to='/login'>Login</Link>
       <br></br>
+      <Link onClick={logout} to='/'>Logout</Link>
+      <br></br>
       <Link to='/registration'>Register</Link>
-
 
 
     </nav>
