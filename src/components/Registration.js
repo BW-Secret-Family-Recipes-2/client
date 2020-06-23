@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { postUserRegister } from '../actions'
 import { LoadingLottie } from '../lotties/LoadingLottie'
-
+import animationData from '../lotties/4073-loader.json'
 
 const initialInfoValues = {
   username: '',
@@ -90,10 +90,9 @@ export default function Registration() {
     //   .finally(() => {
     //     setFormValues(initialInfoValues)
     //   })
-    dispatch(postUserRegister(newUser,history))
-    .finally(() =>{
-      setIsLoading(false)
-    })
+    dispatch(postUserRegister(newUser,history)) 
+   
+ 
   }
 
   const onSubmit = evt => {
@@ -115,7 +114,7 @@ export default function Registration() {
         <div>
           <h2>Create An Account</h2>
           <button>Create</button>
-          {/* {isLoading && <LoadingLottie animationData/>} */}
+          {/* {isLoading && <LoadingLottie something={animationData}/>} */}
         </div>
         <div>
 

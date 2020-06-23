@@ -4,32 +4,41 @@ import axios from 'axios'
 import { v4 as uuid } from 'uuid'
 import formSchema from '../validation/formSchema'
 import* as Yup from 'yup'//needs * to work without error
+import { useDispatch } from 'react-redux'
+import { postUserLogin } from '../actions'
 
 
 
 const exampleUser = {
-    id: uuid(),
     username:'Harper',
     password:'abc123',
   }
   
   const initialInfoValues = {
-    id: uuid(),
     username: '',
     password: '',
+  }
+
+  const initialFormErrors = {
+    username: '',
+    password: '',
+    email: '',
   }
   
 export default function Login(props){
 
     const [ user, setUser] = useState(initialInfoValues)
-    const [formError,setFormError]=useState(initialInfoValues)
+    const [formError,setFormError]=useState(initialFormErrors)
 
     const history = useHistory()
+    const dispatch = useDispatch()
     
+
     const onChange = evt => {
 
        setUser({...user,[evt.target.name]:evt.target.value})
-       const {name,value}=evt.target.value
+
+       const {name,value}=evt.target //deleted .value
        
         
        //Yup needs looking over
@@ -45,39 +54,41 @@ export default function Login(props){
         .catch(err=>{
             setFormError({
                 ...formError,
-            [name]:err.error    
+            [name]:err.errors[0]   
             })
         })
         
     }
 
     
-    const newLogin={
-        id:uuid(),
-        username:user.username,
-        password:user.password
-    }
+
     
 
    //not showing?
    //come back
-    const postNewLogin = newLogin=>{
-        axios.post('https://recipes-bw.herokuapp.com/api/auth/login', newLogin)
-        .then(res=>{
-            console.log(res.data)
-            localStorage.setItem("userID",res.data.newUser.id)
-            console.log(localStorage.getItem("userID"))
-            history.push("/")
-        })
-        .catch(error=>{
-            console.log('you broke it!',error)
-        })
-        
+    const postNewLogin = newLogin =>{
+        // axios.post('https://recipes-bw.herokuapp.com/api/auth/login', newLogin)
+        // .then(res=>{
+        //     console.log(res.data)
+        //     localStorage.setItem("userID",res.data.user.id)
+        //     // console.log(localStorage.getItem("userID"))
+        //     window.localStorage.setItem('token', res.data.token)
+        //     history.push("/")
+        // })
+        // .catch(error=>{
+        //     console.log('you broke it!',error)
+        // })
+        dispatch(postUserLogin(newLogin, history))
     }
 
     const onSubmit = evt => {
         evt.preventDefault()
-        setUser(evt.target.value)
+        console.log(user)
+        const newLogin={
+            // id:uuid(),
+            username: user.username,
+            password: user.password
+        }
 
         postNewLogin(newLogin)
         
@@ -89,7 +100,7 @@ export default function Login(props){
 
     return(
 
-        <form>
+        <form onSubmit={onSubmit}> {/* added onSubmit*/}
             <div>
                 <br/>
             <div>
@@ -107,7 +118,7 @@ export default function Login(props){
                             value={user.username}
                             maxLength='20'
                             onChange={onChange}
-                            onSubmit={onSubmit}
+                            // onSubmit={onSubmit} //No need for onSubmit in your inputs, you need that on the form
 
                         />
                     </label><br/><br/>
@@ -119,7 +130,7 @@ export default function Login(props){
                             value={user.password}
                             maxLength='20'
                             onChange={onChange}
-                            onSubmit={onSubmit}
+                            // onSubmit={onSubmit}
 
                         />
                     </label>
