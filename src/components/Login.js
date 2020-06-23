@@ -85,12 +85,14 @@ export default function Login(props){
 
         <form>
             <div>
+                <br/>
             <div>
                     <h1>Sign In</h1>
                     
                 </div>
                
                 <div>
+                    <br/>
                     <label>Username:&nbsp;
                         <input 
                             type='text'
@@ -102,7 +104,7 @@ export default function Login(props){
                             onSubmit={onSubmit}
 
                         />
-                    </label><br/>
+                    </label><br/><br/>
                     <label>Password:&nbsp;
                         <input 
                             type='text'
@@ -117,7 +119,7 @@ export default function Login(props){
                     </label>
 
 
-                </div>
+                </div><br/>
                 <div>
                     
                     <button className='submitBtn'>Submit</button>
