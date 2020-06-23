@@ -10,9 +10,9 @@ import {fetchUser} from '../actions'
 const Home = () => {
     const [updating, user] = useSelector(state => [state.updating, state.user])
     const dispatch = useDispatch()
-
+console.log(user)
     useEffect(() => {
-        dispatch(fetchUser(1)) //need to change id later based on localStorage !!!!!!!!!!!!!!!!!!!!!!!!
+        dispatch(fetchUser(localStorage.getItem('userID'))) 
     }, [dispatch]) //use effect to display a welcome msg for the user
  
     return (
