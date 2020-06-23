@@ -4,12 +4,13 @@ import { v4 as uuid } from 'uuid'
 import { getQueriesForElement } from '@testing-library/react'
 import * as Yup from 'yup'
 import formSchema from '../validation/formSchema2'
-
+import { useHistory } from 'react-router-dom'
 
 
   
+
+  
   const initialInfoValues = {
-    id: uuid(),
     username: '',
     password: '',
     email: '',
@@ -33,6 +34,8 @@ export default function Registration(){
     const [ user, setUser] = useState(initialInfoValues)
     const [ formValues, setFormValues ] = useState(initialFormValues)
     const [ formErrors, setFormErrors ] = useState(initialFormErrors)
+
+    const history = useHistory()
 
 
 
@@ -70,13 +73,17 @@ export default function Registration(){
     }
 
     const postNewUser = newUser => {
-
+      console.log(newUser)
       axios.post('https://recipes-bw.herokuapp.com/api/auth/register', newUser)
     .then(res => {
       console.log(res.data)
+      localStorage.setItem("userID",res.data.newUser.id)
+      console.log(localStorage.getItem("userID"))
+      history.push("/")
       // setUser([...user, res.data])
     })
     .catch(err => {
+      console.log(err.message)
       debugger
     })
     .finally(() =>{
@@ -88,7 +95,7 @@ export default function Registration(){
      
         evt.preventDefault()
 
-        const newUser = { ...user, id: uuid() }
+        const newUser = { ...user}
         
         setUser(user => [newUser, user])
 
