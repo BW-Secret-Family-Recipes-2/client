@@ -125,6 +125,7 @@ export default function Registration(){
                             type='text'
                             name='username'
                             maxLength='20'
+                            placeholder='Enter a username'
                             value={user.username}
                             onChange={onChange}
                         />
@@ -138,6 +139,7 @@ export default function Registration(){
                             type='password'
                             name='password'
                             maxLength='20'
+                            placeholder='Enter a password'
                             value={user.password}
                             onChange={onChange}
                         />
@@ -151,6 +153,7 @@ export default function Registration(){
                             type='text'
                             name='email'
                             maxLength='50'
+                            placeholder='Enter an email'
                             value={user.email}
                             onChange={onChange}
                         />
