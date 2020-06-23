@@ -36,10 +36,6 @@ export const reducer = (state = initialState, action) => {
                 updating: true,
             }  
             
-        case types.POST_NEWUSER:
-            return{
-                ...state,
-            }
 
         default:
             return state;
