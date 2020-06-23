@@ -14,12 +14,12 @@ export const fetchUser = (userid) => dispatch => {
         })
 }
 
-export const postExistingUser = (newUser, history) => dispatch =>{ //Double check this function once login is ready
+export const postUserLogin = (newUser, history) => dispatch =>{ //Double check this function once login is ready
     axiosWithAuth()
     .post('/api/auth/login')
     .then(res=>{
         console.log(res.data)
-        localStorage.setItem("userID",res.data.newUser.id)
+        localStorage.setItem("userID",res.data.user.id)
         console.log(localStorage.getItem("userID"))
         window.localStorage.setItem('token', res.data.token)
         // //navigate the user to /protected route (whatever landing page)
@@ -27,11 +27,11 @@ export const postExistingUser = (newUser, history) => dispatch =>{ //Double chec
 
     })
     .catch(err=>{
-        console.log(err)
+        console.log('you broke it!',err)
     })
 }
 
-export const postUserRegister = (newUser, history) => dispatch => {
+export const postUserRegister = (newUser, history,setIsLoading) => dispatch => {
     axiosWithAuth()
     .post('/api/auth/register', newUser)
     .then(res=>{
@@ -45,6 +45,7 @@ export const postUserRegister = (newUser, history) => dispatch => {
     .catch(err=>{
         console.log(err)
     })
+    // .finally(setIsLoading)
 }
 
 // ````````````Recipes functions/actions````````````````
