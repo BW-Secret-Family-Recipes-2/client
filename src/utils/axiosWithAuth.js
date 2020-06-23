@@ -8,6 +8,6 @@ const token = window.localStorage.getItem('token')
     headers: {
       authorization: token
     },
-    baseURL: 'http://localhost:5000' //--> check server.js//replace later!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    baseURL: 'https://recipes-bw.herokuapp.com/' //got our baseURL!
   })
 }
