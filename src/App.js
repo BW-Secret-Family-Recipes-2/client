@@ -8,7 +8,7 @@ import Home from './components/Home'
 import Login from './components/Login'
 import Registration from './components/Registration'
 import NavBar from './components/NavBar';
-
+import PrivateRoute from './components/PrivateRoute'
 
 
 function App() {
@@ -29,9 +29,9 @@ function App() {
           <Registration />
         </Route>
 
-        <Route path="/"> {/* Need to be PrivateRoute once Login&Registration is authorized*/}
+        <PrivateRoute path="/"> {/* Need to be PrivateRoute once Login&Registration is authorized*/}
           <Home />
-        </Route>
+        </PrivateRoute>
 
       </Switch>
 

@@ -19,7 +19,7 @@ const NavBar = () => {
         if (userLoggedIn) {
             alert('Logging out')
             localStorage.removeItem('token')
-            //localStorage.removeItem('userID')
+            // localStorage.removeItem('userID')
             setUserLoggedIn(false)
         }
     }
