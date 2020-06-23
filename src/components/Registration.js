@@ -6,6 +6,7 @@ import formSchema from '../validation/formSchema2'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { postUserRegister } from '../actions'
+import { LoadingLottie } from '../lotties/LoadingLottie'
 
 
 const initialInfoValues = {
@@ -32,6 +33,7 @@ export default function Registration() {
   const [user, setUser] = useState(initialInfoValues)
   const [formValues, setFormValues] = useState(initialFormValues)
   const [formErrors, setFormErrors] = useState(initialFormErrors)
+  const [isLoading, setIsLoading] =useState(false)
 
   const history = useHistory()
   const dispatch = useDispatch()
@@ -71,6 +73,7 @@ export default function Registration() {
   }
 
   const postNewUser = newUser => {
+    setIsLoading(true)
     // console.log(newUser)
     // axios.post('https://recipes-bw.herokuapp.com/api/auth/register', newUser)
     //   .then(res => {
@@ -88,6 +91,9 @@ export default function Registration() {
     //     setFormValues(initialInfoValues)
     //   })
     dispatch(postUserRegister(newUser,history))
+    .finally(() =>{
+      setIsLoading(false)
+    })
   }
 
   const onSubmit = evt => {
@@ -103,17 +109,13 @@ export default function Registration() {
 
 
 
-
-
-
-
-
   return (
     <form onSubmit={onSubmit}>
       <div>
         <div>
           <h2>Create An Account</h2>
           <button>Create</button>
+          {/* {isLoading && <LoadingLottie animationData/>} */}
         </div>
         <div>
 
