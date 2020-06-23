@@ -1,22 +1,28 @@
 import React, { useState } from 'react'
+import { addRecipe } from '../actions'
+import { useDispatch, useSelector } from 'react-redux'
 
 const initialState = {
     title: '',
-    source: '',
+    user: '', // Author? User? Source?
     ingredients: '',
     instructions: '',
-    category: ''
+    category: '',
 }
 
 const AddRecipe = () => {
     const [newRecipe, setNewRecipe] = useState(initialState)
+    const dispatch = useDispatch()
+    const [user] = useSelector(state=>[state.user])
 
+    // ````````````Helpers
     const handleChange = e => {
         setNewRecipe({...newRecipe, [e.target.name]:e.target.value})
     }
 
     const handleSubmit = e => {
         e.preventDefault()
+        dispatch(addRecipe({...newRecipe,user: user.username ,user_id:user.id}))
         // Must flesh out later !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     }
 
@@ -31,19 +37,19 @@ const AddRecipe = () => {
             />
             </label>
 
-            <label>Source:
+            <label>User:
                 <input
-                name='source'
-                placeholder='source'
+                name='user'
+                placeholder='user'
                 onChange={handleChange}
-                value={newRecipe.source}
+                value={user.username}
                 />
             </label>
 
             <label>Ingredients:
                 <input
                 name='ingredients'
-                placeholder='ingredients'
+                placeholder='ingredient1, ingredient2, ingredient3, etc'
                 onChange={handleChange}
                 value={newRecipe.ingredients}
                 />
@@ -52,7 +58,7 @@ const AddRecipe = () => {
             <label>Instructions:
                 <input
                 name='instructions'
-                placeholder='instructions'
+                placeholder='step1, step2, step3, etc'
                 onChange={handleChange}
                 value={newRecipe.instructions}
                 />

@@ -37,3 +37,15 @@ display:flex;
 flex-direction: column;
 width: 60%;
 }
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  width:100%;
+}
+
+nav {
+  width: 40%;
+display: flex;
+justify-content: space-evenly;
+}
