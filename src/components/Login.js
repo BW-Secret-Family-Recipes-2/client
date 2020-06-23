@@ -27,23 +27,23 @@ export default function Login(props){
     
     const onChange = evt => {
 
-        setUser(evt.target.value)
+        setUser({...user,[evt.target.name]:evt.target.value})
     }
-
-    
-    const onSubmit = evt => {
-        evt.preventDefault()
-        
-        setUser(evt.target.value)
-        
-    }
-    
 
     const newLogin={
         id:uuid(),
         username:user.username,
         password:user.password
     }
+    
+    const onSubmit = evt => {
+        evt.preventDefault()
+        setUser(evt.target.value)
+        
+    }
+    
+
+    
     
 
     return(
