@@ -21,7 +21,6 @@ const initialInfoValues = {
 const initialFormErrors = {
     username: '',
     password: '',
-    email: '',
 }
 
 export default function Login(props) {
