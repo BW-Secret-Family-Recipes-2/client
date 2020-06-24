@@ -54,7 +54,9 @@ export default function Login(props) {
                 setFormError({
                     ...formError,
                     [name]: err.errors[0]
+                    
                 })
+                
             })
 
     }
@@ -88,8 +90,9 @@ export default function Login(props) {
             // id:uuid(),
             username: user.username,
             password: user.password
+           
         }
-
+        
         postNewLogin(newLogin)
 
     }
@@ -99,8 +102,9 @@ export default function Login(props) {
 
 
     return (
-
+        
         <form onSubmit={onSubmit}> {/* added onSubmit*/}
+            
             <div>
                 <br />
                 <div>
@@ -119,6 +123,11 @@ export default function Login(props) {
                             maxLength='20'
                             onChange={onChange}
 
+                           // required
+                           
+
+
+
                         />
                     </label><br /><br />
                     <label>Password:&nbsp;
@@ -130,11 +139,15 @@ export default function Login(props) {
                             maxLength='20'
                             onChange={onChange}
 
+                           // required
+                           
+
                         />
                     </label>
 
 
                 </div><br />
+
 
 
                 <div className='errors'>
@@ -145,6 +158,7 @@ export default function Login(props) {
 
                 </div>
                       
+
                 <div>
                     {isLoading && <LoadingLottie something={animationData} width={200} height={200} />}
                     {error && <div>{error} </div>}
