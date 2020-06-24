@@ -119,7 +119,7 @@ export default function Login(props) {
                             value={user.username}
                             maxLength='20'
                             onChange={onChange}
-                        // onSubmit={onSubmit} //No need for onSubmit in your inputs, you need that on the form
+                            required
 
                         />
                     </label><br /><br />
@@ -131,7 +131,7 @@ export default function Login(props) {
                             value={user.password}
                             maxLength='20'
                             onChange={onChange}
-                        // onSubmit={onSubmit}
+                            required
 
                         />
                     </label>
