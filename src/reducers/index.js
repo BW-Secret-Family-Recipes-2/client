@@ -4,7 +4,8 @@ export const initialState = {
     user:{},
     recipes:[],
     updating:false,
-    isLoading: false
+    isLoading: false,
+    error:''
 }
 
 
@@ -59,7 +60,12 @@ export const reducer = (state = initialState, action) => {
                 isLoading: action.payload
             }   
 
-            
+        case types.POST_NEWUSER_FAIL:
+        case types.POST_EXISTINGUSER_FAIL:    
+            return{
+                ...state,
+                error: action.payload
+            }
 
         default:
             return state;

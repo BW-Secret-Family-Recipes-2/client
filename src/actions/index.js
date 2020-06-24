@@ -29,7 +29,8 @@ export const postUserLogin = (newUser, history) => dispatch =>{ //Double check t
         dispatch({type: types.POST_EXISTINGUSER_SUCCESS, payload: false})
     })
     .catch(err=>{
-        console.log('you broke it!',err)
+        console.log(err.response.data.message)
+        dispatch({type: types.POST_EXISTINGUSER_FAIL, payload: err.response.data.message})
     })
 }
 
@@ -46,7 +47,8 @@ export const postUserRegister = (newUser, history,setIsLoading) => dispatch => {
         history.push('/')
     })
     .catch(err=>{
-        console.log(err)
+        console.log(err.response.data.message)
+        dispatch({type: types.POST_NEWUSER_FAIL, payload: err.response.data.message })
     })
     // .finally(setIsLoading)
 }
