@@ -34,8 +34,10 @@ const RecipeList = () => {
         <div>
              {!updating && <LoadingLottie height={200} width={200} />}
             <UpdateRecipe updatingRecipe={updatingRecipe}/>
+
            
             <input
+
                 placeholder='search by title or category'
                 value={searchTerm}
                 onChange={e => setSearchTerm(e.target.value)}
@@ -45,7 +47,7 @@ const RecipeList = () => {
                 dealing with and what you can display to the screen) */}
 
                 {filterRecipes(recipes).map((item) => (
-                    <div key={item.id}>
+                    <div key={item.id} className='recipeCard'>
                         <h3>{item.title}</h3>
                         <div>Author: {item.user} </div>
                         <div>Category: {item.category}</div>
