@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import formSchema from '../validation/formSchema'
 import * as Yup from 'yup'//needs * to work without error
@@ -36,19 +36,20 @@ export default function Login(props) {
 
     const onChange = evt => {
 
-       setUser({...user,[evt.target.name]:evt.target.value})
+        setUser({ ...user, [evt.target.name]: evt.target.value })
 
-       const {name,value}=evt.target //deleted .value
-       
-        
-       
-       Yup
-        .reach(formSchema,name)
-        .validate(value)
-        .then(()=>{
-            setFormError({
-                ...formError,
-                [name]:''
+        const { name, value } = evt.target //deleted .value
+
+
+        //Yup needs looking over
+        Yup
+            .reach(formSchema, name)
+            .validate(value)
+            .then(() => {
+                setFormError({
+                    ...formError,
+                    [name]: ''
+                })
             })
             .catch(err => {
                 setFormError({
@@ -61,24 +62,24 @@ export default function Login(props) {
 
 
 
-  
 
-  
-    const postNewLogin = newLogin =>{
-        axiosWithAuth()
-        .post('https://recipes-bw.herokuapp.com/api/auth/login', newLogin)
-        .then(res=>{
-            console.log(res.data)
-            localStorage.setItem("userID",res.data.user.id)
-            // console.log(localStorage.getItem("userID"))
-            window.localStorage.setItem('token', res.data.token)
-            history.push("/")
-        })
-        .catch(error=>{
-            console.log('you broke it!',error)
-        })
-        // dispatch(postUserLogin(newLogin, history))
 
+    //not showing?
+    //come back
+    const postNewLogin = newLogin => {
+        // axiosWithAuth()
+        // .post('https://recipes-bw.herokuapp.com/api/auth/login', newLogin)
+        // .then(res=>{
+        //     console.log(res.data)
+        //     localStorage.setItem("userID",res.data.user.id)
+        //     // console.log(localStorage.getItem("userID"))
+        //     window.localStorage.setItem('token', res.data.token)
+        //     history.push("/")
+        // })
+        // .catch(error=>{
+        //     console.log('you broke it!',error)
+        // })
+        dispatch(postUserLogin(newLogin, history))
     }
 
     const onSubmit = evt => {
@@ -123,10 +124,8 @@ export default function Login(props) {
                         />
                     </label><br /><br />
                     <label>Password:&nbsp;
-
-
-                        <input 
-                            type='password'
+                        <input
+                            type='text'
                             name='password'
                             placeholder='password'
                             value={user.password}
