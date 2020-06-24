@@ -37,7 +37,7 @@ const NavBar = () => {
 
                 {/* <Link to='/' className="navStyle">Home</Link> Switch to the Marketing Page once privateRoute is up */}
 
-            <a href='https://secretfamilyrecipesmarketing.netlify.app'>App info</a>
+            <a href='https://secretfamilyrecipesmarketing.netlify.app' className="navStyle">App Info</a>
 
             </nav>
         </div>
