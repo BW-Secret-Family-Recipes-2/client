@@ -102,40 +102,46 @@ export default function Login(props) {
 
         <form onSubmit={onSubmit}> {/* added onSubmit*/}
             <div>
-                <br />
-                <div>
-                    <h1>Sign In</h1>
-
+                
+                <div className="titleDiv">
+                    <h2>Sign In</h2>
                 </div>
 
-                <div>
-                    <br />
+                <div className="infoDiv">
+                    
+                    <br/>
+                    
                     <label>Username:&nbsp;
                         <input
                             type='text'
                             name='username'
-                            placeholder='username'
+                            placeholder='Enter your username'
                             value={user.username}
                             maxLength='20'
                             onChange={onChange}
-
                         />
-                    </label><br /><br />
+                    </label>
+                    
+                    <br/>
+                    
                     <label>Password:&nbsp;
                         <input
                             type='password'
                             name='password'
-                            placeholder='password'
+                            placeholder='Enter your password'
                             value={user.password}
                             maxLength='20'
                             onChange={onChange}
-
                         />
                     </label>
 
+                    <br/>
 
-                </div><br />
+                    <button className='submitBtn'>Submit</button>
 
+                </div>
+                
+                <br/>
 
                 <div className='errors'>
 
@@ -148,7 +154,7 @@ export default function Login(props) {
                
                     {isLoading && <div className='loader'><LoadingLottie something={animationData} width={150} height={150} /> </div>}
                     {error && <div>{error} </div>}
-                    <button className='submitBtn'>Submit</button>
+                    
                
             </div>
         </form>
