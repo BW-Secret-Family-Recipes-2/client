@@ -69,6 +69,9 @@ const UpdateRecipe = ({updatingRecipe}) => {
                     </label>
 
                     <label>Instructions:
+
+                <input 
+
                 <textarea rows='15'
                             name='instructions'
                             onChange={handleChange}
