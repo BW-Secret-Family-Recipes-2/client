@@ -61,7 +61,7 @@ const UpdateRecipe = ({updatingRecipe}) => {
                     </label>
 
                     <label>Ingredients:
-                <textarea rows='7'
+                <textarea rows="7"
                             name='ingredients'
                             onChange={handleChange}
                             value={updatedRecipe.ingredients}
@@ -69,10 +69,7 @@ const UpdateRecipe = ({updatingRecipe}) => {
                     </label>
 
                     <label>Instructions:
-
-                <input 
-
-                <textarea rows='15'
+                <textarea rows="15"
                             name='instructions'
                             onChange={handleChange}
                             value={updatedRecipe.instructions}
