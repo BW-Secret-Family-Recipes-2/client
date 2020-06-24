@@ -31,12 +31,14 @@ const RecipeList = () => {
 
 
     return (
-        <div>
+        <div className="displayDiv">
              {!updating && <LoadingLottie height={200} width={200} />}
             <UpdateRecipe updatingRecipe={updatingRecipe}/>
+
            
             <input
-                placeholder='search by title or category'
+
+                placeholder='Search by title or category'
                 value={searchTerm}
                 onChange={e => setSearchTerm(e.target.value)}
             />
@@ -45,12 +47,12 @@ const RecipeList = () => {
                 dealing with and what you can display to the screen) */}
 
                 {filterRecipes(recipes).map((item) => (
-                    <div key={item.id}>
+                    <div key={item.id} className='recipeCard'>
                         <h3>{item.title}</h3>
-                        <div>Author: {item.user} </div>
-                        <div>Category: {item.category}</div>
-                        <div>Ingredients: {item.ingredients} </div>
-                        <p>Instructions: {item.instructions}</p>
+                        <div className="titleStyles">Author:</div><div> {item.user} </div>
+                        <div className="titleStyles">Category:</div><div> {item.category}</div>
+                        <div className="titleStyles">Ingredients:</div><div>{item.ingredients} </div>
+                        <p className="titleStyles">Instructions:</p><p>{item.instructions}</p>
                        {(Number(user.id) === item.user_id) && <button onClick={()=>dispatch(deleteRecipe(item.id))}>Delete Recipe</button>}
                        {(Number(user.id) === item.user_id) && <button onClick={() =>{setUpdatingRecipe(item); window.scrollTo(0,0); dispatch(startUpdating())}}>Update Recipe</button>}
                         <br></br>

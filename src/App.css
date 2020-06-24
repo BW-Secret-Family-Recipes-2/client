@@ -51,6 +51,7 @@ nav {
   width: 40%;
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 .navStyle{
@@ -91,4 +92,16 @@ h2{
 
 .buttonStyle{
   padding: 2%;
+}
+
+.displayDiv{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.titleStyles{
+  text-decoration: underline;
+  font-weight: 800;
 }

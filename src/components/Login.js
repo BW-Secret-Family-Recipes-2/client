@@ -119,6 +119,7 @@ export default function Login(props) {
                             value={user.username}
                             maxLength='20'
                             onChange={onChange}
+
                         />
                     </label>
                     
@@ -139,22 +140,32 @@ export default function Login(props) {
 
                     <button className='submitBtn'>Submit</button>
 
+                    <br/>
+                    
+                    <div className='errors'>
+
+                        <div>{formError.username}</div>
+
+                        <div>{formError.password}</div>
+
+                    </div>
+
                 </div>
                 
                 <br/>
 
-                <div className='errors'>
 
-                    <div>{formError.username}</div>
-
-                    <div>{formError.password}</div>
-
-                </div>
+                
                       
+
+                <div>
+                    {isLoading && <LoadingLottie something={animationData} width={200} height={200} />}
+
                
                     {isLoading && <div className='loader'><LoadingLottie something={animationData} width={150} height={150} /> </div>}
+
                     {error && <div>{error} </div>}
-                    
+                    </div>
                
             </div>
         </form>
