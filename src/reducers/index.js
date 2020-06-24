@@ -5,7 +5,8 @@ export const initialState = {
     recipes:[],
     updating:false,
     isLoading: false,
-    error:''
+    error:'',
+    adding: false
 }
 
 
@@ -21,11 +22,19 @@ export const reducer = (state = initialState, action) => {
             return{
                 ...state,
                 recipes: action.payload
+            }  
+            
+        case types.START_ADDING:
+        case types.DONT_ADD:
+            return{
+                ...state, 
+                adding: action.payload
             }   
         case types.ADD_RECIPE:
             return{
                 ...state,
-                recipes:[...state.recipes, action.payload]
+                recipes:[...state.recipes, action.payload],
+                adding: false
             }
         case types.DELETE_RECIPE:
             return{
@@ -34,12 +43,12 @@ export const reducer = (state = initialState, action) => {
                     return recipe.id !== action.payload.id
                 })
             }  
+
         case types.START_UPDATING:
             return{
                 ...state,
                 updating: action.payload
             }    
-            
         case types.UPDATE_RECIPE:
             return{
                 ...state,

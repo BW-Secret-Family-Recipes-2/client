@@ -47,7 +47,6 @@ const UpdateRecipe = ({updatingRecipe}) => {
                     <label>Title:
             <input
                             name='title'
-                            placeholder='title'
                             onChange={handleChange}
                             value={updatedRecipe.title}
                         />
@@ -56,25 +55,25 @@ const UpdateRecipe = ({updatingRecipe}) => {
                     <label>Category:
                 <input
                             name='category'
-                            placeholder='category'
                             onChange={handleChange}
                             value={updatedRecipe.category}
                         />
                     </label>
 
                     <label>Ingredients:
-                <input
+                <textarea rows='7'
                             name='ingredients'
-                            placeholder='ingredients'
                             onChange={handleChange}
                             value={updatedRecipe.ingredients}
                         />
                     </label>
 
                     <label>Instructions:
+
                 <input 
+
+                <textarea rows='15'
                             name='instructions'
-                            placeholder='instructions'
                             onChange={handleChange}
                             value={updatedRecipe.instructions}
                         />
@@ -83,7 +82,6 @@ const UpdateRecipe = ({updatingRecipe}) => {
                     <label>Author:
                 <input
                             name='user'
-                            placeholder='user'
                             // onChange={handleChange}
                             value={updatedRecipe.user}
                         />

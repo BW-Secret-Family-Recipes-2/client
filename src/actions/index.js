@@ -66,6 +66,14 @@ export const fetchRecipes = () => dispatch => {
     })
 }
 
+export const startAdding = () => dispatch => {
+    dispatch({type: types.START_ADDING, payload: true})
+}
+
+export const cancelAdd = () => dispatch => {
+    dispatch({type: types.DONT_ADD, payload: false})
+}
+
 export const addRecipe = (newRecipe) => dispatch => {
     axiosWithAuth()
     .post('/api/recipes/', newRecipe)

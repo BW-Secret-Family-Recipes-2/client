@@ -5,7 +5,7 @@ import * as Yup from 'yup'//needs * to work without error
 import { useDispatch, useSelector } from 'react-redux'
 import { postUserLogin } from '../actions'
 import { LoadingLottie } from '../lotties/LoadingLottie'
-import animationData from '../lotties/10818-food-around-the-city.json'
+import animationData from '../lotties/10815-walking-burger.json'
 
 
 const exampleUser = {
@@ -54,9 +54,7 @@ export default function Login(props) {
                 setFormError({
                     ...formError,
                     [name]: err.errors[0]
-                    
                 })
-                
             })
 
     }
@@ -90,9 +88,8 @@ export default function Login(props) {
             // id:uuid(),
             username: user.username,
             password: user.password
-           
         }
-        
+
         postNewLogin(newLogin)
 
     }
@@ -102,53 +99,52 @@ export default function Login(props) {
 
 
     return (
-        
-        <form onSubmit={onSubmit}> {/* added onSubmit*/}
-            
-            <div>
-                <br />
-                <div>
-                    <h1>Sign In</h1>
 
+        <form onSubmit={onSubmit}> {/* added onSubmit*/}
+            <div>
+                
+                <div className="titleDiv">
+                    <h2>Sign In</h2>
                 </div>
 
-                <div>
-                    <br />
+                <div className="infoDiv">
+                    
+                    <br/>
+                    
                     <label>Username:&nbsp;
                         <input
                             type='text'
                             name='username'
-                            placeholder='username'
+                            placeholder='Enter your username'
                             value={user.username}
                             maxLength='20'
                             onChange={onChange}
-                           // required
-                           
-
-                           // required
-                           
-
-
 
                         />
-                    </label><br /><br />
+                    </label>
+                    
+                    <br/>
+                    
                     <label>Password:&nbsp;
                         <input
                             type='password'
                             name='password'
-                            placeholder='password'
+                            placeholder='Enter your password'
                             value={user.password}
                             maxLength='20'
                             onChange={onChange}
-
-                           // required
-                           
-
                         />
                     </label>
 
+                    <br/>
 
-                </div><br />
+                    <button className='submitBtn'>Submit</button>
+
+
+
+                </div>
+                
+                <br/>
 
 
                 <div className='errors'>
@@ -159,11 +155,16 @@ export default function Login(props) {
 
                 </div>
                       
+
                 <div>
                     {isLoading && <LoadingLottie something={animationData} width={200} height={200} />}
+
+               
+                    {isLoading && <div className='loader'><LoadingLottie something={animationData} width={150} height={150} /> </div>}
+
                     {error && <div>{error} </div>}
-                    <button className='submitBtn'>Submit</button>
-                </div>
+                    
+               
             </div>
         </form>
     )
