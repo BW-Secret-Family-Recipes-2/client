@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { postUserRegister } from '../actions'
 import { LoadingLottie } from '../lotties/LoadingLottie'
-import animationData from '../lotties/4073-loader.json'
+import animationData from '../lotties/24985-web-dev.json'
 
 
 const initialInfoValues = {
@@ -32,7 +32,7 @@ export default function Registration() {
   const [user, setUser] = useState(initialInfoValues)
   const [formValues, setFormValues] = useState(initialFormValues)
   const [formErrors, setFormErrors] = useState(initialFormErrors)
-  const [isLoading] = useSelector(state=>[state.isLoading])
+  const [isLoading, error] = useSelector(state=>[state.isLoading, state.error])
 
   const history = useHistory()
   const dispatch = useDispatch()
@@ -171,6 +171,7 @@ export default function Registration() {
             <div>{formErrors.email}</div>
 
           </div>
+          {error && error}
         </div>
       </div>
     </form>

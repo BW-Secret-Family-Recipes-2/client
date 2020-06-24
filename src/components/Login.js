@@ -28,7 +28,7 @@ export default function Login(props) {
 
     const [user, setUser] = useState(initialInfoValues)
     const [formError, setFormError] = useState(initialFormErrors)
-    const [isLoading] = useSelector(state => [state.isLoading])
+    const [isLoading, error] = useSelector(state => [state.isLoading, state.error])
 
     const history = useHistory()
     const dispatch = useDispatch()
@@ -129,7 +129,7 @@ export default function Login(props) {
                     </label><br /><br />
                     <label>Password:&nbsp;
                         <input
-                            type='text'
+                            type='password'
                             name='password'
                             placeholder='password'
                             value={user.password}
@@ -144,8 +144,19 @@ export default function Login(props) {
 
                 </div><br />
                
+
+
+                <div className='errors'>
+
+                    <div>{formError.username}</div>
+
+                    <div>{formError.password}</div>
+
+                </div>
+                      
                 <div>
                     {isLoading && <LoadingLottie something={animationData} width={200} height={200} />}
+                    {error && <div>{error} </div>}
                     <button className='submitBtn'>Submit</button>
                 </div>
             </div>
