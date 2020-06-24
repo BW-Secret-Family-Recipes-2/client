@@ -35,7 +35,7 @@ export const postUserLogin = (newUser, history) => dispatch =>{ //Double check t
 }
 
 export const postUserRegister = (newUser, history,setIsLoading) => dispatch => {
-    
+    dispatch({type: types.POST_NEWUSER, payload: true})
     axiosWithAuth()
     .post('/api/auth/register', newUser)
     .then(res=>{
@@ -45,6 +45,7 @@ export const postUserRegister = (newUser, history,setIsLoading) => dispatch => {
         window.localStorage.setItem('token', res.data.token)
         // //navigate the user to /protected route (whatever landing page)
         history.push('/')
+        dispatch({type: types.POST_NEWUSER_SUCCESS, payload: false})
     })
     .catch(err=>{
         console.log(err.response.data.message)
