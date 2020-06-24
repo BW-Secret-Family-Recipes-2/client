@@ -124,6 +124,12 @@ export default function Login(props) {
                             onChange={onChange}
                            // required
                            
+
+                           // required
+                           
+
+
+
                         />
                     </label><br /><br />
                     <label>Password:&nbsp;
@@ -134,6 +140,7 @@ export default function Login(props) {
                             value={user.password}
                             maxLength='20'
                             onChange={onChange}
+
                            // required
                            
 
@@ -142,7 +149,6 @@ export default function Login(props) {
 
 
                 </div><br />
-               
 
 
                 <div className='errors'>
