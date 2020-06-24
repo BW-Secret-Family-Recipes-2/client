@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { fetchRecipes} from '../actions'
+import { fetchRecipes, deleteRecipe, startUpdating} from '../actions'
 import { useDispatch, useSelector } from 'react-redux'
+import UpdateRecipe from './UpdateRecipe'
 
 const RecipeList = () => {
     const [searchTerm, setSearchTerm] = useState('')
+    const [updatingRecipe, setUpdatingRecipe] = useState({})
     const dispatch = useDispatch()
-    const [recipes] = useSelector(state => [state.recipes])
+    const [recipes, user] = useSelector(state => [state.recipes, state.user])
+
     console.log(recipes)
+    console.log(user)
     useEffect(() => {
         // get request function here to get recipes array
         dispatch(fetchRecipes())
@@ -24,8 +28,11 @@ const RecipeList = () => {
         })
     }
 
+
     return (
         <div>
+            <UpdateRecipe updatingRecipe={updatingRecipe}/>
+
             <input
                 placeholder='search by title or category'
                 value={searchTerm}
@@ -35,11 +42,15 @@ const RecipeList = () => {
             {/*REACT I: Go ahead and make a map in here (console.log(recipes) on line 9 to see what you're
                 dealing with and what you can display to the screen) */}
 
-                {recipes.map((item) => (
-                    <div>
+                {filterRecipes(recipes).map((item) => (
+                    <div key={item.id}>
                         <h3>{item.title}</h3>
-                        <h5>{item.category}</h5>
-                        <p>{item.instructions}</p>
+                        <div>Author: {item.user} </div>
+                        <div>Category: {item.category}</div>
+                        <div>Ingredients: {item.ingredients} </div>
+                        <p>Instructions: {item.instructions}</p>
+                       {(Number(user.id) === item.user_id) && <button onClick={()=>dispatch(deleteRecipe(item.id))}>Delete Recipe</button>}
+                       {(Number(user.id) === item.user_id) && <button onClick={() =>{setUpdatingRecipe(item); window.scrollTo(0,0); dispatch(startUpdating())}}>Update Recipe</button>}
                         <br></br>
                     </div>
                 ))}

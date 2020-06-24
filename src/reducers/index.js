@@ -4,7 +4,7 @@ export const initialState = {
     user:{},
     recipes:[],
     updating:false,
-   
+    isLoading: false
 }
 
 
@@ -29,12 +29,36 @@ export const reducer = (state = initialState, action) => {
         case types.DELETE_RECIPE:
             return{
                 ...state,
-            }         
+                recipes: state.recipes.filter( recipe =>{
+                    return recipe.id !== action.payload.id
+                })
+            }  
+        case types.START_UPDATING:
+            return{
+                ...state,
+                updating: action.payload
+            }    
+            
         case types.UPDATE_RECIPE:
             return{
                 ...state,
-                updating: true,
+                recipes: state.recipes.map(recipe =>{
+                    if(recipe.id === action.payload.id){
+                        return action.payload
+                    }else{
+                        return recipe
+                    }
+                }),
+                updating: false
             }  
+
+        case types.POST_EXISTINGUSER:
+        case types.POST_EXISTINGUSER_SUCCESS:    
+            return{
+                ...state,
+                isLoading: action.payload
+            }   
+
             
 
         default:
