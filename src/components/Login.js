@@ -5,7 +5,7 @@ import * as Yup from 'yup'//needs * to work without error
 import { useDispatch, useSelector } from 'react-redux'
 import { postUserLogin } from '../actions'
 import { LoadingLottie } from '../lotties/LoadingLottie'
-import animationData from '../lotties/10818-food-around-the-city.json'
+import animationData from '../lotties/10815-walking-burger.json'
 
 
 const exampleUser = {
@@ -145,11 +145,11 @@ export default function Login(props) {
 
                 </div>
                       
-                <div>
-                    {isLoading && <LoadingLottie something={animationData} width={200} height={200} />}
+               
+                    {isLoading && <div className='loader'><LoadingLottie something={animationData} width={150} height={150} /> </div>}
                     {error && <div>{error} </div>}
                     <button className='submitBtn'>Submit</button>
-                </div>
+               
             </div>
         </form>
     )
