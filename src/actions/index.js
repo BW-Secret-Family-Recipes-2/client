@@ -66,6 +66,11 @@ export const fetchRecipes = () => dispatch => {
     })
 }
 
+export const startAdding = () => dispatch => {
+    dispatch({type: types.START_ADDING, payload: true})
+}
+
+
 export const addRecipe = (newRecipe) => dispatch => {
     axiosWithAuth()
     .post('/api/recipes/', newRecipe)
