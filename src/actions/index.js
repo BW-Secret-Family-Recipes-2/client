@@ -15,8 +15,9 @@ export const fetchUser = (userid) => dispatch => {
 }
 
 export const postUserLogin = (newUser, history) => dispatch =>{ //Double check this function once login is ready
+  dispatch({type: types.POST_EXISTINGUSER, payload: true})
     axiosWithAuth()
-    .post('/api/auth/login')
+    .post('/api/auth/login', newUser)
     .then(res=>{
         console.log(res.data)
         localStorage.setItem("userID",res.data.user.id)
@@ -25,6 +26,7 @@ export const postUserLogin = (newUser, history) => dispatch =>{ //Double check t
         // //navigate the user to /protected route (whatever landing page)
         history.push('/')
 
+        dispatch({type: types.POST_EXISTINGUSER_SUCCESS, payload: false})
     })
     .catch(err=>{
         console.log('you broke it!',err)
@@ -32,6 +34,7 @@ export const postUserLogin = (newUser, history) => dispatch =>{ //Double check t
 }
 
 export const postUserRegister = (newUser, history,setIsLoading) => dispatch => {
+    
     axiosWithAuth()
     .post('/api/auth/register', newUser)
     .then(res=>{
@@ -75,20 +78,26 @@ export const addRecipe = (newRecipe) => dispatch => {
 
 export const deleteRecipe = (recipeId) => dispatch => {
     axiosWithAuth()
-    .post(`/api/recipes/${recipeId}`)
+    .delete(`/api/recipes/${recipeId}`)
     .then(res => {
-        console.log(res)
+        console.log(res.data)
+        dispatch({type: types.DELETE_RECIPE, payload: res.data.deletedRecipe})
     })
     .catch(err => {
         console.log(err)
     })
 }
 
+export const startUpdating = () => dispatch => {
+    dispatch({type: types.START_UPDATING, payload: true})
+}
+
 export const updateRecipe = (recipe) => dispatch => {
     axiosWithAuth()
     .put(`/api/recipes/${recipe.id}`, recipe)
     .then(res=>{
-        console.log(res)
+        console.log(res.data.updatedRecipe)
+        dispatch({type: types.UPDATE_RECIPE, payload: res.data.updatedRecipe})
     })
     .catch(err=>{
         console.log(err)

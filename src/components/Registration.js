@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import { getQueriesForElement } from '@testing-library/react'
+import React, { useState } from 'react'
 import * as Yup from 'yup'
 import formSchema from '../validation/formSchema2'
 import { useHistory } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { postUserRegister } from '../actions'
 import { LoadingLottie } from '../lotties/LoadingLottie'
 import animationData from '../lotties/4073-loader.json'
+
 
 const initialInfoValues = {
   username: '',
@@ -33,7 +32,7 @@ export default function Registration() {
   const [user, setUser] = useState(initialInfoValues)
   const [formValues, setFormValues] = useState(initialFormValues)
   const [formErrors, setFormErrors] = useState(initialFormErrors)
-  const [isLoading, setIsLoading] =useState(false)
+  const [isLoading] = useSelector(state=>[state.isLoading])
 
   const history = useHistory()
   const dispatch = useDispatch()
@@ -73,13 +72,14 @@ export default function Registration() {
   }
 
   const postNewUser = newUser => {
-    setIsLoading(true)
     // console.log(newUser)
-    // axios.post('https://recipes-bw.herokuapp.com/api/auth/register', newUser)
+    // axiosWithAuth()
+    // .post('https://recipes-bw.herokuapp.com/api/auth/register', newUser)
     //   .then(res => {
     //     console.log(res.data)
     //     localStorage.setItem("userID", res.data.newUser.id)
     //     console.log(localStorage.getItem("userID"))
+    //     window.localStorage.setItem('token', res.data.token)
     //     history.push("/")
     //     // setUser([...user, res.data])
     //   })
@@ -88,7 +88,7 @@ export default function Registration() {
     //     debugger
     //   })
     //   .finally(() => {
-    //     setFormValues(initialInfoValues)
+       
     //   })
     dispatch(postUserRegister(newUser,history)) 
    
@@ -114,7 +114,7 @@ export default function Registration() {
         <div>
           <h2>Create An Account</h2>
           <button>Create</button>
-          {/* {isLoading && <LoadingLottie something={animationData}/>} */}
+          {/* {isLoading && <LoadingLottie something={animationData} width={300} height={300}/>} */}
         </div>
         <div>
 
