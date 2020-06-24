@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { addRecipe, startAdding } from '../actions'
+import { addRecipe, startAdding, cancelAdd } from '../actions'
 import { useDispatch, useSelector } from 'react-redux'
 
 const initialState = {
@@ -30,6 +30,7 @@ const AddRecipe = () => {
     return (
         <>
        {adding && <form className='recipeForm' onSubmit={handleSubmit}>
+    <button classname='cancelBtn' onClick={()=>dispatch(cancelAdd())}>x</button>
             <label>Title:
             <input 
             name='title'

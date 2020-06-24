@@ -25,6 +25,7 @@ export const reducer = (state = initialState, action) => {
             }  
             
         case types.START_ADDING:
+        case types.DONT_ADD:
             return{
                 ...state, 
                 adding: action.payload
