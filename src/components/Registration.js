@@ -111,14 +111,13 @@ export default function Registration() {
   return (
     <form onSubmit={onSubmit}>
       <div>
-        <div>
+        <div className="titleDiv">
           <h2>Create An Account</h2>
-          <button>Create</button>
+          
           {/* {isLoading && <LoadingLottie something={animationData} width={300} height={300}/>} */}
         </div>
-        <div>
+        <div className="infoDiv">
 
-          <br></br>
           <br></br>
 
           <label>Username:&nbsp;
@@ -128,10 +127,10 @@ export default function Registration() {
               maxLength='20'
               value={user.username}
               onChange={onChange}
+              placeholder="Enter a username"
             />
           </label>
 
-          <br></br>
           <br></br>
 
           <label>Password:&nbsp;
@@ -141,10 +140,10 @@ export default function Registration() {
               maxLength='20'
               value={user.password}
               onChange={onChange}
+              placeholder="Enter a password"
             />
           </label>
 
-          <br></br>
           <br></br>
 
           <label>E-Mail Address:&nbsp;
@@ -154,11 +153,14 @@ export default function Registration() {
               maxLength='50'
               value={user.email}
               onChange={onChange}
+              placeholder="Enter a valid e-mail"
             />
           </label>
 
+          
           <br></br>
-          <br></br>
+
+          <button>Create</button>
 
           <div>
 
