@@ -72,7 +72,7 @@ const UpdateRecipe = ({updatingRecipe}) => {
                     </label>
 
                     <label>Instructions:
-                <input
+                <input 
                             name='instructions'
                             placeholder='instructions'
                             onChange={handleChange}

@@ -3,6 +3,7 @@ import { Switch, Route, Link } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 
 import './App.css';
+import './Recipe.css';
 
 import Home from './components/Home'
 import Login from './components/Login'
