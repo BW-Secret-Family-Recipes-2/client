@@ -7,10 +7,10 @@ const RecipeList = () => {
     const [searchTerm, setSearchTerm] = useState('')
     const [updatingRecipe, setUpdatingRecipe] = useState({})
     const dispatch = useDispatch()
-    const [recipes] = useSelector(state => [state.recipes])
+    const [recipes, user] = useSelector(state => [state.recipes, state.user])
 
     console.log(recipes)
-
+    console.log(user)
     useEffect(() => {
         // get request function here to get recipes array
         dispatch(fetchRecipes())
@@ -49,8 +49,8 @@ const RecipeList = () => {
                         <div>Category: {item.category}</div>
                         <div>Ingredients: {item.ingredients} </div>
                         <p>Instructions: {item.instructions}</p>
-                       <button onClick={()=>dispatch(deleteRecipe(item.id))}>Delete Recipe</button>
-                       <button onClick={() =>{setUpdatingRecipe(item); window.scrollTo(0,0); dispatch(startUpdating())}}>Update Recipe</button>
+                       {(Number(user.id) === item.user_id) && <button onClick={()=>dispatch(deleteRecipe(item.id))}>Delete Recipe</button>}
+                       {(Number(user.id) === item.user_id) && <button onClick={() =>{setUpdatingRecipe(item); window.scrollTo(0,0); dispatch(startUpdating())}}>Update Recipe</button>}
                         <br></br>
                     </div>
                 ))}
