@@ -113,8 +113,6 @@ export default function Registration() {
       <div>
         <div className="titleDiv">
           <h2>Create An Account</h2>
-          
-          {/* {isLoading && <LoadingLottie something={animationData} width={300} height={300}/>} */}
         </div>
         <div className="infoDiv">
 
@@ -159,7 +157,7 @@ export default function Registration() {
 
           
           <br></br>
-
+          {isLoading && <LoadingLottie something={animationData} width={100} height={100}/>}
           <button>Create</button>
 
           <div>

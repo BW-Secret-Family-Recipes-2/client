@@ -62,8 +62,10 @@ export const reducer = (state = initialState, action) => {
                 updating: false
             }  
 
-        case types.POST_EXISTINGUSER:
-        case types.POST_EXISTINGUSER_SUCCESS:    
+        case types.POST_EXISTINGUSER:    
+        case types.POST_EXISTINGUSER_SUCCESS:  
+        case types.POST_NEWUSER:
+        case types.POST_NEWUSER_SUCCESS:      
             return{
                 ...state,
                 isLoading: action.payload
