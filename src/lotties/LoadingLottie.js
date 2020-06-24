@@ -10,7 +10,7 @@ export const LoadingLottie = ({height, width, something}) => {
     const defaultOptions ={
         loop: true,
         autoplay: true,
-        animationData: something || animationData5,
+        animationData: something || animationData3,
         rendererSettings: {
           preserveAspectRatio: 'xMidYMid slice'
         }

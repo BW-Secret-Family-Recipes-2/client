@@ -52,13 +52,13 @@ const UpdateRecipe = ({updatingRecipe}) => {
                             value={updatedRecipe.title}
                         />
                     </label>
-
-                    <label>Author:
+                    
+                    <label>Category:
                 <input
-                            name='user'
-                            placeholder='user'
-                            // onChange={handleChange}
-                            value={updatedRecipe.user}
+                            name='category'
+                            placeholder='category'
+                            onChange={handleChange}
+                            value={updatedRecipe.category}
                         />
                     </label>
 
@@ -80,12 +80,12 @@ const UpdateRecipe = ({updatingRecipe}) => {
                         />
                     </label>
 
-                    <label>Category:
+                    <label>Author:
                 <input
-                            name='category'
-                            placeholder='category'
-                            onChange={handleChange}
-                            value={updatedRecipe.category}
+                            name='user'
+                            placeholder='user'
+                            // onChange={handleChange}
+                            value={updatedRecipe.user}
                         />
                     </label>
 
