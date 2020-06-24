@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { addRecipe } from '../actions'
+import { addRecipe, startAdding } from '../actions'
 import { useDispatch, useSelector } from 'react-redux'
 
 const initialState = {
@@ -13,7 +13,7 @@ const initialState = {
 const AddRecipe = () => {
     const [newRecipe, setNewRecipe] = useState(initialState)
     const dispatch = useDispatch()
-    const [user] = useSelector(state=>[state.user])
+    const [user, adding] = useSelector(state=>[state.user, state.adding])
 
     // ````````````Helpers
     const handleChange = e => {
@@ -28,13 +28,15 @@ const AddRecipe = () => {
     }
 
     return (
-        <form className='recipeForm' onSubmit={handleSubmit}>
+        <>
+       {adding && <form className='recipeForm' onSubmit={handleSubmit}>
             <label>Title:
             <input 
             name='title'
             placeholder='title'
             onChange={handleChange}
             value={newRecipe.title}
+            required
             />
             </label>
 
@@ -44,24 +46,28 @@ const AddRecipe = () => {
                 placeholder='user'
                 onChange={handleChange}
                 value={user.username}
+                required
                 />
             </label>
 
             <label>Ingredients:
-                <input
+                <textarea rows="7" 
                 name='ingredients'
-                placeholder='ingredient1, ingredient2, ingredient3, etc'
+                placeholder=
+                {`ingredient1,\ningredient2, \ningredient3, \netc`}
                 onChange={handleChange}
                 value={newRecipe.ingredients}
+                required
                 />
             </label>
 
             <label>Instructions:
-                <input
+                <textarea rows="15" 
                 name='instructions'
-                placeholder='step1, step2, step3, etc'
+                placeholder={`1.)step description, \n2)step description, \n3)step description, \netc`}
                 onChange={handleChange}
                 value={newRecipe.instructions}
+                required
                 />
             </label>
 
@@ -71,11 +77,14 @@ const AddRecipe = () => {
                 placeholder='category'
                 onChange={handleChange}
                 value={newRecipe.category}
+                required
                 />
             </label>
 
-            <button>Add Recipe</button>
-        </form>
+           <button >Add Recipe</button>
+        </form>}
+        {!adding && <button onClick={()=> dispatch(startAdding())}>Add new Recipe?</button>}
+        </>
     )
 }
 

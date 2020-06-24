@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { fetchRecipes, deleteRecipe, startUpdating} from '../actions'
 import { useDispatch, useSelector } from 'react-redux'
 import UpdateRecipe from './UpdateRecipe'
+import { LoadingLottie } from '../lotties/LoadingLottie'
 
 const RecipeList = () => {
     const [searchTerm, setSearchTerm] = useState('')
     const [updatingRecipe, setUpdatingRecipe] = useState({})
     const dispatch = useDispatch()
-    const [recipes, user] = useSelector(state => [state.recipes, state.user])
+    const [recipes, user, updating] = useSelector(state => [state.recipes, state.user, state.updating])
 
     console.log(recipes)
     console.log(user)
@@ -31,8 +32,9 @@ const RecipeList = () => {
 
     return (
         <div>
+             {!updating && <LoadingLottie height={200} width={200} />}
             <UpdateRecipe updatingRecipe={updatingRecipe}/>
-
+           
             <input
                 placeholder='search by title or category'
                 value={searchTerm}

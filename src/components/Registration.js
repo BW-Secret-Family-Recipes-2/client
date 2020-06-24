@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { postUserRegister } from '../actions'
 import { LoadingLottie } from '../lotties/LoadingLottie'
-import animationData from '../lotties/24985-web-dev.json'
+import animationData from '../lotties/890-loading-animation (1).json'
 
 
 const initialInfoValues = {
