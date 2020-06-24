@@ -28,14 +28,14 @@ const NavBar = () => {
     }
     return (
         <div className='navBar'>
-            <h2>Secret Family Recipe 2</h2> 
+            <h2 className="title">Secret Family Recipe 2</h2> 
             <nav> 
      
-                <Link onClick={logout} to='/'>{userLoggedIn ? 'Logout' : 'Login'}</Link> {/*switch route to '/' once private Route is running*/}
+                <Link onClick={logout} to='/' className="navStyle">{userLoggedIn ? 'Logout' : 'Login'}</Link> {/*switch route to '/' once private Route is running*/}
         
-                <Link to='/registration'>Register</Link>
+                <Link to='/registration' className="navStyle">Register</Link>
 
-                <Link to='/'>Home</Link> {/* Switch to the Marketing Page once privateRoute is up*/}
+                <Link to='/' className="navStyle">Home</Link> {/* Switch to the Marketing Page once privateRoute is up*/}
 
             </nav>
         </div>
