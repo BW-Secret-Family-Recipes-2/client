@@ -21,7 +21,7 @@ console.log(user)
 
             {!updating && <LoadingLottie height={200} width={200} />}
             {/* ^^ remove later; just here to look through loader options!!!!!!!!!!!!!!!!!!!! */}
-            <UpdateRecipe />
+            {/* <UpdateRecipe /> */}
             <RecipeList />
             <AddRecipe />
        

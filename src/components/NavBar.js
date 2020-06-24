@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-const token = window.localStorage.getItem('token') 
+
 const NavBar = () => {
     const [userLoggedIn, setUserLoggedIn] = useState(false)
     const [user] = useSelector(state=>[state.user])
     useEffect(() => {
+        const token = window.localStorage.getItem('token') 
         if (token) {
             setUserLoggedIn(true)
         }

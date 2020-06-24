@@ -23,6 +23,7 @@ const AddRecipe = () => {
     const handleSubmit = e => {
         e.preventDefault()
         dispatch(addRecipe({...newRecipe,user: user.username ,user_id:user.id}))
+        setNewRecipe(initialState)
         // Must flesh out later !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     }
 

@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { fetchRecipes} from '../actions'
+import { fetchRecipes, deleteRecipe, startUpdating} from '../actions'
 import { useDispatch, useSelector } from 'react-redux'
+import UpdateRecipe from './UpdateRecipe'
 
 const RecipeList = () => {
     const [searchTerm, setSearchTerm] = useState('')
+    const [updatingRecipe, setUpdatingRecipe] = useState({})
     const dispatch = useDispatch()
     const [recipes] = useSelector(state => [state.recipes])
+
     console.log(recipes)
+
     useEffect(() => {
         // get request function here to get recipes array
         dispatch(fetchRecipes())
@@ -24,8 +28,11 @@ const RecipeList = () => {
         })
     }
 
+
     return (
         <div>
+            <UpdateRecipe updatingRecipe={updatingRecipe}/>
+
             <input
                 placeholder='search by title or category'
                 value={searchTerm}
@@ -36,10 +43,14 @@ const RecipeList = () => {
                 dealing with and what you can display to the screen) */}
 
                 {filterRecipes(recipes).map((item) => (
-                    <div>
+                    <div key={item.id}>
                         <h3>{item.title}</h3>
-                        <h5>{item.category}</h5>
-                        <p>{item.instructions}</p>
+                        <div>Author: {item.user} </div>
+                        <div>Category: {item.category}</div>
+                        <div>Ingredients: {item.ingredients} </div>
+                        <p>Instructions: {item.instructions}</p>
+                       <button onClick={()=>dispatch(deleteRecipe(item.id))}>Delete Recipe</button>
+                       <button onClick={() =>{setUpdatingRecipe(item); window.scrollTo(0,0); dispatch(startUpdating())}}>Update Recipe</button>
                         <br></br>
                     </div>
                 ))}

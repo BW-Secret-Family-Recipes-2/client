@@ -1,32 +1,34 @@
 import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
+import { updateRecipe } from '../actions'
 
 const initialState = {
     title: '',
-    source: '',
+    user: '',
     ingredients: '',
     instructions: '',
     category: ''
 }
 
-const UpdateRecipe = () => {
+const UpdateRecipe = ({updatingRecipe}) => {
     const [updatedRecipe, setUpdatedRecipe] = useState(initialState)
     const [updating] = useSelector(state => [state.updating])
-    const params = useParams()
-    
+    const dispatch = useDispatch()
+
+    // console.log(updatingRecipe)
     useEffect(()=>{
         //get by id call for recipes -- need set updating recipe into the inputs
         axiosWithAuth()
-        .get(`/api/recipes/${params.id}`)
+        .get(`/api/recipes/${updatingRecipe.id}`)
         .then(res=>{
             console.log(res)
+            setUpdatedRecipe(updatingRecipe)
         })
         .catch(err=>{
             console.log(err)
         })
-    }, [params.id]) //<-id
+    }, [updatingRecipe]) //<-id?
 
     const handleChange = e => {
         setUpdatedRecipe({ ...updatedRecipe, [e.target.name]: e.target.value })
@@ -34,12 +36,13 @@ const UpdateRecipe = () => {
 
     const handleSubmit = e => {
         e.preventDefault()
+        dispatch(updateRecipe(updatedRecipe))
         // Must flesh out later!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     }
 
     return (
         <>
-            {!updating &&  //remove '!' once editing function is implemented!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            {updating &&  //remove '!' once editing function is implemented!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 <form className='recipeForm' onSubmit={handleSubmit}>
                     <label>Title:
             <input
@@ -50,12 +53,12 @@ const UpdateRecipe = () => {
                         />
                     </label>
 
-                    <label>Source:
+                    <label>Author:
                 <input
-                            name='source'
-                            placeholder='source'
-                            onChange={handleChange}
-                            value={updatedRecipe.source}
+                            name='user'
+                            placeholder='user'
+                            // onChange={handleChange}
+                            value={updatedRecipe.user}
                         />
                     </label>
 
