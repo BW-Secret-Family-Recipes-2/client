@@ -92,3 +92,15 @@ h2{
 .buttonStyle{
   padding: 2%;
 }
+
+.displayDiv{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.titleStyles{
+  text-decoration: underline;
+  font-weight: 800;
+}

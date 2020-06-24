@@ -43,7 +43,8 @@ const UpdateRecipe = ({updatingRecipe}) => {
     return (
         <>
             {updating &&  //remove '!' once editing function is implemented!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                <form className='recipeForm' onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
+                    <div className='recipeForm'>
                     <label>Title:
             <input
                             name='title'
@@ -70,7 +71,7 @@ const UpdateRecipe = ({updatingRecipe}) => {
 
                     <label>Instructions:
 
-                <input 
+                
 
                 <textarea rows='15'
                             name='instructions'
@@ -88,6 +89,7 @@ const UpdateRecipe = ({updatingRecipe}) => {
                     </label>
 
                     <button>Update Recipe</button>
+                    </div>
                 </form>
             }
         </>

@@ -4,7 +4,7 @@ import* as Yup from 'yup'//needs * to work without error
 const formSchema=Yup.object().shape({
     username:Yup
         .string()
-        .min(3,'username must be at least 3 characters long')
+        .min(3,'Username must be at least 3 characters long')
         .required('Must include a username'),
     password:Yup
         .string()

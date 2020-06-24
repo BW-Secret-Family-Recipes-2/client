@@ -3,11 +3,12 @@
 
 .recipeForm{
     border: 5px solid  #038B8B  ;
-    
+    margin-left: 2%;
+    margin-right: 2%;
 }
 .recipeCard{
     text-align:center;
-    border: 5px solid #E8CA46  ;
-    
+    border: 3px solid #E8CA46;
+    padding: 2%;
     margin-top:5%;
 }

@@ -140,20 +140,22 @@ export default function Login(props) {
 
                     <button className='submitBtn'>Submit</button>
 
+                    <br/>
+                    
+                    <div className='errors'>
 
+                        <div>{formError.username}</div>
+
+                        <div>{formError.password}</div>
+
+                    </div>
 
                 </div>
                 
                 <br/>
 
 
-                <div className='errors'>
-
-                    <div>{formError.username}</div>
-
-                    <div>{formError.password}</div>
-
-                </div>
+                
                       
 
                 <div>
@@ -163,7 +165,7 @@ export default function Login(props) {
                     {isLoading && <div className='loader'><LoadingLottie something={animationData} width={150} height={150} /> </div>}
 
                     {error && <div>{error} </div>}
-                    
+                    </div>
                
             </div>
         </form>
