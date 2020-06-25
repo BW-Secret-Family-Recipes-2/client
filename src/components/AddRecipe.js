@@ -29,8 +29,9 @@ const AddRecipe = () => {
 
     return (
         <>
-       {adding && <form className='recipeForm' onSubmit={handleSubmit}>
-    <button classname='cancelBtn' onClick={()=>dispatch(cancelAdd())}>x</button>
+       {adding && 
+       <form className='recipeForm' onSubmit={handleSubmit}>
+  
             <label>Title:
             <input 
             name='title'
@@ -81,10 +82,12 @@ const AddRecipe = () => {
                 required
                 />
             </label>
-
+       
            <button >Add Recipe</button>
+           <button onClick={()=>dispatch(cancelAdd())}>Cancel</button>
+        
         </form>}
-        {!adding && <button onClick={()=> dispatch(startAdding())}>Add new Recipe?</button>}
+        {!adding && <button className='addRecipeBtn' onClick={()=> dispatch(startAdding())}>Add new Recipe?</button>}
         </>
     )
 }

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import AddRecipe from './AddRecipe'
 import RecipeList from './RecipeList'
-import { LoadingLottie } from '../lotties/LoadingLottie'
+// import { LoadingLottie } from '../lotties/LoadingLottie'
 import { useSelector, useDispatch } from 'react-redux'
 import {fetchUser} from '../actions'
 

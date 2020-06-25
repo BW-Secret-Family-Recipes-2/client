@@ -31,12 +31,12 @@ const RecipeList = () => {
 
 
     return (
-        <div className="displayDiv">
+        <div className="recipeList">
              {!updating && <LoadingLottie height={200} width={200} />}
             <UpdateRecipe updatingRecipe={updatingRecipe}/>
 
            
-            <input
+            <input className='searchBar'
 
                 placeholder='Search by title or category'
                 value={searchTerm}
@@ -53,9 +53,9 @@ const RecipeList = () => {
                         <div className="titleStyles">Category:</div><div> {item.category}</div>
                         <div className="titleStyles">Ingredients:</div><div>{item.ingredients} </div>
                         <p className="titleStyles">Instructions:</p><p>{item.instructions}</p>
-                       {(Number(user.id) === item.user_id) && <button onClick={()=>dispatch(deleteRecipe(item.id))}>Delete Recipe</button>}
                        {(Number(user.id) === item.user_id) && <button onClick={() =>{setUpdatingRecipe(item); window.scrollTo(0,0); dispatch(startUpdating())}}>Update Recipe</button>}
-                        <br></br>
+                       {(Number(user.id) === item.user_id) && <button onClick={()=>dispatch(deleteRecipe(item.id))}>Delete Recipe</button>}
+                       <br></br>
                     </div>
                 ))}
 

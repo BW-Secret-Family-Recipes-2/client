@@ -34,7 +34,7 @@ export const postUserLogin = (newUser, history) => dispatch =>{ //Double check t
     })
 }
 
-export const postUserRegister = (newUser, history,setIsLoading) => dispatch => {
+export const postUserRegister = (newUser, history) => dispatch => {
     dispatch({type: types.POST_NEWUSER, payload: true})
     axiosWithAuth()
     .post('/api/auth/register', newUser)
@@ -51,7 +51,6 @@ export const postUserRegister = (newUser, history,setIsLoading) => dispatch => {
         console.log(err.response.data.message)
         dispatch({type: types.POST_NEWUSER_FAIL, payload: err.response.data.message })
     })
-    // .finally(setIsLoading)
 }
 
 // ````````````Recipes functions/actions````````````````
