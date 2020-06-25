@@ -45,6 +45,7 @@ const UpdateRecipe = ({updatingRecipe}) => {
             {updating &&  //remove '!' once editing function is implemented!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 <form className='recipeForm' onSubmit={handleSubmit}>
                     {/* <div className='recipeForm'> */}
+                    <h2>Update Recipe:</h2>
                     <label>Title:
             <input
                             name='title'

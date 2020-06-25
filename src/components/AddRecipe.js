@@ -31,7 +31,8 @@ const AddRecipe = () => {
         <>
        {adding && 
        <form className='recipeForm' onSubmit={handleSubmit}>
-  
+           <h2>New Recipe:</h2>
+
             <label>Title:
             <input 
             name='title'
