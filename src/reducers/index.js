@@ -33,7 +33,7 @@ export const reducer = (state = initialState, action) => {
         case types.ADD_RECIPE:
             return{
                 ...state,
-                recipes:[...state.recipes, action.payload],
+                recipes:[action.payload,...state.recipes],
                 adding: false
             }
         case types.DELETE_RECIPE:
