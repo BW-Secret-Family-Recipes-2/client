@@ -16,7 +16,7 @@ console.log(user)
  
     return (
         <div className='home' >
-            <h2>Welcome {user.username}!</h2>
+           <div className='welcomeMsg'><h2>Welcome {user.username}!</h2> </div>
 
             {/* {updating && <LoadingLottie height={200} width={200} />} */}
             <AddRecipe />

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, NavLink } from 'react-router-dom'
 import formSchema from '../validation/formSchema'
 import * as Yup from 'yup'//needs * to work without error
 import { useDispatch, useSelector } from 'react-redux'
@@ -100,7 +100,7 @@ export default function Login(props) {
 
     return (
 
-        <form onSubmit={onSubmit}> {/* added onSubmit*/}
+        <form className='loginForm' onSubmit={onSubmit}> {/* added onSubmit*/}
             <div>
                 
                 <div className="titleDiv">
@@ -111,7 +111,7 @@ export default function Login(props) {
                     
                     <br/>
                     
-                    <label>Username:&nbsp;
+                    <label><h3>Username:&nbsp;</h3>
                         <input
                             type='text'
                             name='username'
@@ -125,7 +125,7 @@ export default function Login(props) {
                     
                     <br/>
                     
-                    <label>Password:&nbsp;
+                    <label><h3>Password:&nbsp;</h3>
                         <input
                             type='password'
                             name='password'
@@ -137,11 +137,16 @@ export default function Login(props) {
                     </label>
 
                     <br/>
-       
+                    <NavLink className='haveAccount' to='/registration'>
+                <h4> Don't have an account? Click to Register! </h4>
+                </NavLink>
+
                     <button className='submitBtn'>Submit</button>
 
                     <br/>
-                    
+                
+               
+
                     <div className='errors'>
 
                         <div>{formError.username}</div>
@@ -149,14 +154,10 @@ export default function Login(props) {
                         <div>{formError.password}</div>
 
                     </div>
-
+                    {error && <div className='onClickError'>{error} </div>}
                 </div>
                 
-                <br/>
-               
-                    {error && <div>{error} </div>}
-                   
-               
+            
             </div>
         </form>
     )

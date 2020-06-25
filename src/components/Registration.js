@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import * as Yup from 'yup'
 import formSchema from '../validation/formSchema2'
-import { useHistory } from 'react-router-dom'
+import { useHistory, NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { postUserRegister } from '../actions'
 import { LoadingLottie } from '../lotties/LoadingLottie'
@@ -109,7 +109,7 @@ export default function Registration() {
 
 
   return (
-    <form onSubmit={onSubmit}>
+    <form className='loginForm' onSubmit={onSubmit}>
       <div>
         <div className="titleDiv">
         {isLoading && <LoadingLottie something={animationData} width={100} height={100}/>}  <h2>Create An Account</h2>     {isLoading && <LoadingLottie something={animationData} width={100} height={100}/>}
@@ -118,7 +118,7 @@ export default function Registration() {
 
           <br></br>
 
-          <label>Username:&nbsp;
+          <label><h3>Username:&nbsp;</h3>
                         <input
               type='text'
               name='username'
@@ -131,7 +131,7 @@ export default function Registration() {
 
           <br></br>
 
-          <label>Password:&nbsp;
+          <label><h3>Password:&nbsp;</h3>
                         <input
               type='password'
               name='password'
@@ -144,7 +144,7 @@ export default function Registration() {
 
           <br></br>
 
-          <label>E-Mail Address:&nbsp;
+          <label><h3>E-Mail Address:&nbsp;</h3>
                         <input
               type='text'
               name='email'
@@ -157,10 +157,16 @@ export default function Registration() {
 
           
           <br></br>
-     
-          <button>Create</button>
+ 
+          <NavLink className='haveAccount' to='/login'>
+                <h4> Already have an account? Click to Login! </h4>
+                </NavLink>
+             
+          <button className='createBtn'>Create</button>
 
-          <div>
+      
+
+          <div className='errors'>
 
             <div>{formErrors.username}</div>
 
@@ -171,7 +177,8 @@ export default function Registration() {
             <div>{formErrors.email}</div>
 
           </div>
-          {error && error}
+          {error && <div className='onClickError'>{error} </div>}
+        
         </div>
       </div>
     </form>

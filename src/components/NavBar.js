@@ -28,7 +28,7 @@ const NavBar = () => {
     }
     return (
         <div className='navBar'>
-            <h2 className="title">Secret Family Recipe 2</h2> 
+           <a href='https://secretfamilyrecipesmarketing.netlify.app' ><h2 className="title">Secret Family Recipes</h2> </a> 
             <nav> 
      
                 <Link onClick={logout} to='/' className="navStyle">{userLoggedIn ? 'Logout' : 'Login'}</Link> {/*switch route to '/' once private Route is running*/}
@@ -37,7 +37,7 @@ const NavBar = () => {
 
                 {/* <Link to='/' className="navStyle">Home</Link> Switch to the Marketing Page once privateRoute is up */}
 
-            <a href='https://secretfamilyrecipesmarketing.netlify.app' className="navStyle">App Info</a>
+            {/* <a href='https://secretfamilyrecipesmarketing.netlify.app' className="navStyle">App Info</a> */}
 
             </nav>
         </div>
