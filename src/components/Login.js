@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { postUserLogin } from '../actions'
 import { LoadingLottie } from '../lotties/LoadingLottie'
 import animationData from '../lotties/10815-walking-burger.json'
-
+import animationData2 from '../lotties/890-loading-animation (1).json'
 
 const exampleUser = {
     username: 'Harper',
@@ -104,7 +104,7 @@ export default function Login(props) {
             <div>
                 
                 <div className="titleDiv">
-                    <h2>Sign In</h2>
+                {isLoading && <div className='loader'><LoadingLottie something={animationData} width={80} height={80} /> </div>} <h2>Sign In</h2> {isLoading && <div className='loader'><LoadingLottie something={animationData} width={80} height={80} /> </div>}
                 </div>
 
                 <div className="infoDiv">
@@ -137,7 +137,7 @@ export default function Login(props) {
                     </label>
 
                     <br/>
-
+       
                     <button className='submitBtn'>Submit</button>
 
                     <br/>
@@ -153,19 +153,9 @@ export default function Login(props) {
                 </div>
                 
                 <br/>
-
-
-                
-                      
-
-                <div>
-                    {isLoading && <LoadingLottie something={animationData} width={200} height={200} />}
-
                
-                    {isLoading && <div className='loader'><LoadingLottie something={animationData} width={150} height={150} /> </div>}
-
                     {error && <div>{error} </div>}
-                    </div>
+                   
                
             </div>
         </form>
