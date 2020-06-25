@@ -21,7 +21,7 @@ console.log(user)
             {/* {updating && <LoadingLottie height={200} width={200} />} */}
             <AddRecipe />
             <RecipeList />
-            <AddRecipe />
+            {/* <AddRecipe /> */}
        
         </div>
     )
