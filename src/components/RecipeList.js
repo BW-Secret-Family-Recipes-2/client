@@ -32,7 +32,7 @@ const RecipeList = () => {
 
     return (
         <div className="recipeList">
-             {!updating && <LoadingLottie height={200} width={200} />}
+             {!updating && <LoadingLottie height={250} width={250} />}
             <UpdateRecipe updatingRecipe={updatingRecipe}/>
 
            
@@ -53,7 +53,7 @@ const RecipeList = () => {
                         <div className="titleStyles">Category:</div><div> {item.category}</div>
                         <div className="titleStyles">Ingredients:</div><div>{item.ingredients} </div>
                         <p className="titleStyles">Instructions:</p><p>{item.instructions}</p>
-                       {(Number(user.id) === item.user_id) && <button onClick={() =>{setUpdatingRecipe(item); window.scrollTo(0,0); dispatch(startUpdating())}}>Update Recipe</button>}
+                       {(Number(user.id) === item.user_id) && <button onClick={() =>{setUpdatingRecipe(item); window.scrollTo({top: 0, behavior: 'smooth'}); dispatch(startUpdating())}}>Update Recipe</button>}
                        {(Number(user.id) === item.user_id) && <button onClick={()=>dispatch(deleteRecipe(item.id))}>Delete Recipe</button>}
                        <br></br>
                     </div>
