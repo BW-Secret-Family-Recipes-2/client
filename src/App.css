@@ -44,6 +44,7 @@ body{
   text-align: center;
   font-size: 2rem;
   text-shadow: 5px 8px 3px rgb(0, 66, 66, .3);
+  padding-bottom: 1%;
 }
 
 .navBar {
@@ -249,7 +250,9 @@ position:relative;
 button:hover{
   background-image: url('./images/source.gif');
   color: black;
-  text-shadow: 5px 8px 3px rgba(160, 155, 155, 0.7);
+  font-weight:bold;
+  text-shadow: 5px 8px 3px rgba(100, 98, 98, 0.7);
+  background-size: cover;
 }
 
 
