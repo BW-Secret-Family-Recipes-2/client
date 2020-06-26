@@ -16,7 +16,8 @@ export const reducer = (state = initialState, action) => {
         case types.FETCH_USER:
             return{
                 ...state,
-                user: action.payload
+                user: action.payload, 
+                isLoading: false
             }
         case types.FETCH_RECIPES:
             return{
